@@ -183,3 +183,42 @@ test('Domain Derivation Logic: Computes domain stats dynamically from applicatio
   assert.ok(fintech.appNames.includes('FinFlow Pay'));
 });
 
+test('Multi-Version System: All preview routes compile and maintain complete data integrity', async () => {
+  const routes = ['preview/minimal/index.html', 'preview/modern/index.html', 'preview/parallax/index.html'];
+
+  for (const route of routes) {
+    const filePath = path.resolve('dist', route);
+    assert.ok(fs.existsSync(filePath), `dist/${route} must be built statically`);
+    const content = fs.readFileSync(filePath, 'utf8');
+
+    for (const app of EXPECTED_APPS) {
+      assert.ok(content.includes(app.name), `${route} must include app name ${app.name}`);
+      assert.ok(
+        content.includes(app.url) || content.includes(app.url.replace(/&/g, '&amp;')),
+        `${route} must include exact Play Store URL for ${app.name}`
+      );
+    }
+  }
+});
+
+test('Production Cleanliness: DevVersionToolbar is 100% stripped from production build', () => {
+  const indexHtml = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
+  assert.strictEqual(
+    indexHtml.includes('dev-version-toolbar'),
+    false,
+    'DevVersionToolbar must not be rendered in dist/index.html'
+  );
+  assert.strictEqual(
+    indexHtml.includes('Dev Switcher'),
+    false,
+    'Dev Switcher badge must not appear in production builds'
+  );
+});
+
+test('Theme Configuration: siteThemeConfig has valid activeTheme and theme list', async () => {
+  const { siteThemeConfig } = await import('../src/config/theme.ts');
+  assert.ok(['minimal', 'modern', 'parallax'].includes(siteThemeConfig.activeTheme));
+  assert.strictEqual(siteThemeConfig.availableThemes.length, 3);
+});
+
+

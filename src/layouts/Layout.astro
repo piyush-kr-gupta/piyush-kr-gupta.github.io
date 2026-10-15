@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import DevVersionToolbar from '../components/DevVersionToolbar.astro';
 import { portfolioData } from '../data/portfolio';
 import { getAssetUrl } from '../utils/url';
 
@@ -9,6 +10,7 @@ interface Props {
   title?: string;
   description?: string;
   canonicalUrl?: string;
+  currentVariant?: string;
 }
 
 const { profile } = portfolioData;
@@ -17,6 +19,7 @@ const {
   title = `${profile.name} | ${profile.headline}`,
   description = profile.shortSummary,
   canonicalUrl = Astro.url.href,
+  currentVariant,
 } = Astro.props;
 
 // Schema.org Structured Data
@@ -111,5 +114,8 @@ const jsonLd = {
 
     <!-- Footer Landmark -->
     <Footer />
+
+    <!-- Dev-only preview toolbar (stripped from production builds) -->
+    <DevVersionToolbar currentVariant={currentVariant} />
   </body>
 </html>

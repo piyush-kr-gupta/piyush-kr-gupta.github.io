@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ParallaxTheme from '../../components/themes/parallax/ParallaxTheme.astro';
+import { portfolioData } from '../../data/portfolio';
+
+const { profile } = portfolioData;
+---
+
+<Layout
+  title={`${profile.name} | ${profile.headline} (Parallax & Motion Preview)`}
+  description={profile.shortSummary}
+  currentVariant="parallax"
+>
+  <ParallaxTheme />
+</Layout>

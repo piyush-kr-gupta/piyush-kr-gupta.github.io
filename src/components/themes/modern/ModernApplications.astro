@@ -1,0 +1,402 @@
+---
+import { portfolioData, getUniqueDomains } from '../../../data/portfolio';
+import { getAssetUrl } from '../../../utils/url';
+
+const { applications } = portfolioData;
+const uniqueDomains = getUniqueDomains(applications);
+---
+
+<section id="work" class="py-16 md:py-24 border-b border-zinc-200/80 dark:border-zinc-800/80 scroll-mt-16 relative">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="max-w-2xl mb-10">
+      <div class="inline-flex items-center gap-2 rounded-md bg-sky-50 dark:bg-sky-950/60 px-2.5 py-1 text-xs font-semibold text-sky-700 dark:text-sky-300 border border-sky-200/80 dark:border-sky-800/60 mb-3">
+        Interactive Portfolio Showcase
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">
+        Commercial Android & Flutter Applications
+      </h2>
+      <p class="mt-3 text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        Production applications serving millions of users across grocery e-commerce, healthcare diagnostics, B2B freight networks, and digital media.
+      </p>
+    </div>
+
+    <!-- Modern Filter Panel -->
+    <div class="mb-10 rounded-2xl border border-zinc-200/90 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md p-5 shadow-xs space-y-4">
+      
+      <!-- Top Row: Search and Quick Stats -->
+      <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+        <div class="relative flex-1 max-w-md">
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-zinc-400">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input
+            id="modern-search-input"
+            type="search"
+            placeholder="Search by app, keyword, or technology..."
+            class="w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 pl-10 pr-9 py-2.5 text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 focus:outline-none transition-all shadow-xs"
+            aria-label="Search applications"
+          />
+          <button
+            id="modern-clear-search"
+            type="button"
+            class="hidden absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200"
+            aria-label="Clear search"
+          >
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <span id="modern-results-count" class="text-xs font-semibold text-zinc-600 dark:text-zinc-400" aria-live="polite">
+            Showing {applications.length} of {applications.length} applications
+          </span>
+
+          <button
+            id="modern-reset-btn"
+            type="button"
+            class="hidden items-center gap-1.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-3 py-1.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:border-sky-500 hover:text-sky-600 transition-colors shadow-xs"
+          >
+            <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.033 8.033 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            <span>Reset</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Segmented Domain Filter Pills -->
+      <div class="pt-2 border-t border-zinc-100 dark:border-zinc-800">
+        <p class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-2.5">
+          Filter by Industry Domain
+        </p>
+        <div class="flex flex-wrap gap-1.5" id="modern-domain-pills">
+          <button
+            type="button"
+            class="modern-domain-btn active-pill px-3 py-1 rounded-lg text-xs font-semibold transition-all border border-sky-600 bg-sky-600 text-white dark:bg-sky-500 dark:border-sky-500 dark:text-zinc-950 shadow-xs"
+            data-domain="all"
+          >
+            All Domains ({applications.length})
+          </button>
+          {uniqueDomains.map((domain) => (
+            <button
+              type="button"
+              class="modern-domain-btn px-3 py-1 rounded-lg text-xs font-medium border border-zinc-200 dark:border-zinc-700/80 bg-white dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 hover:border-sky-400 dark:hover:border-sky-500 transition-all shadow-xs"
+              data-domain={domain}
+            >
+              {domain}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Segmented Business Model Filter -->
+      <div class="pt-2 border-t border-zinc-100 dark:border-zinc-800 flex items-center gap-3">
+        <span class="text-xs font-medium text-zinc-500 dark:text-zinc-400 whitespace-nowrap">
+          Audience:
+        </span>
+        <div class="flex items-center gap-1.5" id="modern-model-pills">
+          <button
+            type="button"
+            class="modern-model-btn active-model px-2.5 py-0.5 rounded-md text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
+            data-model="all"
+          >
+            All
+          </button>
+          <button
+            type="button"
+            class="modern-model-btn px-2.5 py-0.5 rounded-md text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+            data-model="B2C"
+          >
+            B2C
+          </button>
+          <button
+            type="button"
+            class="modern-model-btn px-2.5 py-0.5 rounded-md text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+            data-model="B2B"
+          >
+            B2B
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modern Application Cards Grid -->
+    <div id="modern-apps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {applications.map((app) => (
+        <article
+          class="modern-app-card group relative flex flex-col justify-between rounded-2xl border border-zinc-200/90 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md p-6 hover:border-sky-500/50 dark:hover:border-sky-500/50 hover:shadow-lg dark:hover:shadow-sky-950/30 transition-all duration-300"
+          data-app-id={app.id}
+          data-name={app.name.toLowerCase()}
+          data-domain={app.domain}
+          data-model={app.businessModel}
+          data-tech={app.technologies.join(' ').toLowerCase()}
+        >
+          <div>
+            <!-- Header -->
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div class="flex items-center gap-3.5">
+                {app.iconPath ? (
+                  <div class="relative h-13 w-13 shrink-0 overflow-hidden rounded-2xl border border-zinc-200/90 dark:border-zinc-700 bg-white dark:bg-zinc-800 p-0.5 shadow-sm group-hover:scale-105 transition-transform duration-300">
+                    <img
+                      src={getAssetUrl(app.iconPath)}
+                      alt={`${app.name} icon`}
+                      width="52"
+                      height="52"
+                      loading="lazy"
+                      decoding="async"
+                      class="h-full w-full object-cover rounded-[14px]"
+                    />
+                  </div>
+                ) : (
+                  <div class="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl bg-zinc-100 dark:bg-zinc-800 font-bold text-sm tracking-tight text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700 shadow-sm">
+                    {app.initials}
+                  </div>
+                )}
+                <div>
+                  <h3 class="text-lg font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                    {app.name}
+                  </h3>
+                  {app.company && (
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400 font-medium">
+                      {app.company}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <!-- Badges -->
+              <div class="flex flex-col items-end gap-1.5 shrink-0">
+                <span class="inline-flex items-center rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 px-2.5 py-0.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                  {app.domain}
+                </span>
+                {app.businessModel !== 'Unspecified' && (
+                  <span class="inline-flex items-center rounded-lg bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800 px-2.5 py-0.5 text-[11px] font-bold text-sky-700 dark:text-sky-300">
+                    {app.businessModel}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <!-- Description -->
+            <p class="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed mb-4">
+              {app.description}
+            </p>
+
+            <!-- Highlights -->
+            {app.highlights && app.highlights.length > 0 && (
+              <div class="mb-5 space-y-2">
+                <p class="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                  Engineering Contributions
+                </p>
+                <ul class="space-y-1.5 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  {app.highlights.map((highlight) => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-sky-500 dark:text-sky-400 mt-0.5 shrink-0 font-bold">&check;</span>
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+
+          <!-- Bottom: Tech Stack & Play Store Action -->
+          <div class="pt-4 border-t border-zinc-100 dark:border-zinc-800/80">
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              {app.technologies.map((tech) => (
+                <span class="inline-flex items-center rounded-md px-2 py-0.5 text-[11px] font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200/60 dark:border-zinc-700/60">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <div class="flex items-center justify-between">
+              <a
+                href={app.playStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-xl bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 px-4 py-2 text-xs font-semibold hover:bg-zinc-800 dark:hover:bg-white transition-all shadow-xs group/btn focus-visible:ring-2 focus-visible:ring-sky-500"
+                aria-label={`View ${app.name} on Google Play Store`}
+              >
+                <!-- Play Store icon -->
+                <svg class="h-3.5 w-3.5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3.609 1.814L13.792 12 3.61 22.186c-.37-.34-.61-.83-.61-1.39V3.204c0-.56.24-1.05.61-1.39zm11.597 11.599L4.992 23.63c.27.13.57.2.89.2.47 0 .93-.15 1.32-.43l10.8-6.19-2.796-3.797zm2.796-2.825l3.52 2.02c1.07.61 1.07 1.62 0 2.23l-3.52 2.02-2.3-3.13 2.3-3.14zm-2.796-2.825L7.202.57C6.81.29 6.35.14 5.88.14c-.32 0-.62.07-.89.2l10.214 10.217 2.796-3.797z" />
+                </svg>
+                <span>View on Google Play</span>
+                <svg class="h-3 w-3 transition-transform group-hover/btn:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Empty State -->
+    <div
+      id="modern-empty-state"
+      class="hidden rounded-2xl border border-dashed border-zinc-300 dark:border-zinc-700 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-12 text-center"
+    >
+      <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-zinc-100 dark:bg-zinc-800 text-zinc-400 mb-4">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+        No applications match your filter
+      </h3>
+      <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400 max-w-sm mx-auto">
+        Try adjusting your search terms or selecting a different business domain.
+      </p>
+      <div class="mt-6">
+        <button
+          id="modern-empty-reset"
+          type="button"
+          class="inline-flex items-center gap-2 rounded-xl bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 px-5 py-2.5 text-sm font-semibold hover:bg-zinc-800 dark:hover:bg-white transition-colors"
+        >
+          <span>Reset All Filters</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initModernFilters() {
+    const searchInput = document.getElementById('modern-search-input') as HTMLInputElement | null;
+    const clearSearchBtn = document.getElementById('modern-clear-search');
+    const domainBtns = document.querySelectorAll<HTMLButtonElement>('.modern-domain-btn');
+    const modelBtns = document.querySelectorAll<HTMLButtonElement>('.modern-model-btn');
+    const resetBtn = document.getElementById('modern-reset-btn');
+    const emptyResetBtn = document.getElementById('modern-empty-reset');
+    const resultsCount = document.getElementById('modern-results-count');
+    const emptyState = document.getElementById('modern-empty-state');
+    const appCards = document.querySelectorAll<HTMLElement>('.modern-app-card');
+    const totalApps = appCards.length;
+
+    let selectedDomain = 'all';
+    let selectedModel = 'all';
+
+    function applyFilters() {
+      const query = (searchInput?.value || '').trim().toLowerCase();
+
+      // Clear button visibility
+      if (clearSearchBtn) {
+        if (query.length > 0) clearSearchBtn.classList.remove('hidden');
+        else clearSearchBtn.classList.add('hidden');
+      }
+
+      // Reset button visibility
+      const isFiltered = query.length > 0 || selectedDomain !== 'all' || selectedModel !== 'all';
+      if (resetBtn) {
+        if (isFiltered) {
+          resetBtn.classList.remove('hidden');
+          resetBtn.classList.add('inline-flex');
+        } else {
+          resetBtn.classList.add('hidden');
+          resetBtn.classList.remove('inline-flex');
+        }
+      }
+
+      let visible = 0;
+      appCards.forEach((card) => {
+        const name = card.dataset.name || '';
+        const domain = card.dataset.domain || '';
+        const model = card.dataset.model || '';
+        const tech = card.dataset.tech || '';
+
+        const matchesQuery = query === '' || name.includes(query) || tech.includes(query);
+        const matchesDomain = selectedDomain === 'all' || domain === selectedDomain;
+        const matchesModel = selectedModel === 'all' || model === selectedModel;
+
+        if (matchesQuery && matchesDomain && matchesModel) {
+          card.classList.remove('hidden');
+          visible++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (resultsCount) {
+        resultsCount.textContent = `Showing ${visible} of ${totalApps} applications`;
+      }
+
+      if (emptyState) {
+        if (visible === 0) emptyState.classList.remove('hidden');
+        else emptyState.classList.add('hidden');
+      }
+    }
+
+    function setDomain(domain: string) {
+      selectedDomain = domain;
+      domainBtns.forEach((btn) => {
+        if (btn.dataset.domain === domain) {
+          btn.className = 'modern-domain-btn active-pill px-3 py-1 rounded-lg text-xs font-semibold transition-all border border-sky-600 bg-sky-600 text-white dark:bg-sky-500 dark:border-sky-500 dark:text-zinc-950 shadow-xs';
+        } else {
+          btn.className = 'modern-domain-btn px-3 py-1 rounded-lg text-xs font-medium border border-zinc-200 dark:border-zinc-700/80 bg-white dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 hover:border-sky-400 dark:hover:border-sky-500 transition-all shadow-xs';
+        }
+      });
+      applyFilters();
+    }
+
+    function setModel(model: string) {
+      selectedModel = model;
+      modelBtns.forEach((btn) => {
+        if (btn.dataset.model === model) {
+          btn.className = 'modern-model-btn active-model px-2.5 py-0.5 rounded-md text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900';
+        } else {
+          btn.className = 'modern-model-btn px-2.5 py-0.5 rounded-md text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700';
+        }
+      });
+      applyFilters();
+    }
+
+    function resetAll() {
+      if (searchInput) searchInput.value = '';
+      setDomain('all');
+      setModel('all');
+      if (searchInput) searchInput.focus();
+    }
+
+    // Expose global method for domain section click-to-filter
+    (window as any).filterModernPortfolioByDomain = function (domain: string) {
+      setDomain(domain);
+      const workSection = document.getElementById('work');
+      if (workSection) workSection.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    domainBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const d = btn.dataset.domain || 'all';
+        setDomain(d);
+      });
+    });
+
+    modelBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const m = btn.dataset.model || 'all';
+        setModel(m);
+      });
+    });
+
+    searchInput?.addEventListener('input', applyFilters);
+    clearSearchBtn?.addEventListener('click', () => {
+      if (searchInput) {
+        searchInput.value = '';
+        applyFilters();
+        searchInput.focus();
+      }
+    });
+
+    resetBtn?.addEventListener('click', resetAll);
+    emptyResetBtn?.addEventListener('click', resetAll);
+  }
+
+  initModernFilters();
+</script>

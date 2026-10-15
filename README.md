@@ -17,11 +17,12 @@ Built with **Astro**, **Tailwind CSS v4**, and **TypeScript**, generating 100% s
 7. [How to Add or Replace Local Application Images](#7-how-to-add-or-replace-local-application-images)
 8. [How to Update LinkedIn, GitHub, and Email Links](#8-how-to-update-linkedin-github-and-email-links)
 9. [How to Change Site Title, Description, Accent Color, and Theme Defaults](#9-how-to-change-site-title-description-accent-color-and-theme-defaults)
-10. [Deployment to GitHub Pages](#10-deployment-to-github-pages)
-11. [Deployment to Vercel](#11-deployment-to-vercel)
-12. [Deployment to Cloudflare Pages](#12-deployment-to-cloudflare-pages)
-13. [Custom-Domain Configuration and Base-Path Considerations](#13-custom-domain-configuration-and-base-path-considerations)
-14. [Troubleshooting Common Deployment Issues](#14-troubleshooting-common-deployment-issues)
+10. [Version Management & Design Themes](#10-version-management--design-themes)
+11. [Deployment to GitHub Pages](#11-deployment-to-github-pages)
+12. [Deployment to Vercel](#12-deployment-to-vercel)
+13. [Deployment to Cloudflare Pages](#13-deployment-to-cloudflare-pages)
+14. [Custom-Domain Configuration and Base-Path Considerations](#14-custom-domain-configuration-and-base-path-considerations)
+15. [Troubleshooting Common Deployment Issues](#15-troubleshooting-common-deployment-issues)
 
 ---
 
@@ -223,7 +224,27 @@ The theme system:
 
 ---
 
-## 10. Deployment to GitHub Pages
+## 10. Version Management & Design Themes
+
+The codebase includes an integrated **Theme & Version Management System** so you can develop, preview, and test multiple styles (Minimalist, Modern, and Parallax) without showing toggles or distractions to recruiters.
+
+### How It Works:
+- **Zero Distraction for Recruiters**: In production builds, the dev toolbar is **100% stripped** by Astro's compiler (`import.meta.env.DEV`). Public visitors only see the single finalized theme you designate.
+- **1-Line Theme Finalization**: Change the active live theme in `src/config/theme.ts`:
+  ```typescript
+  export const siteThemeConfig = {
+    activeTheme: 'minimal', // Set to 'minimal', 'modern', or 'parallax'
+  };
+  ```
+- **Preview Routes**:
+  - `/preview/minimal`: Clean, understated, high-contrast engineering portfolio.
+  - `/preview/modern`: Glassmorphic cards, subtle gradient accents, and segmented filter controls.
+  - `/preview/parallax`: Spatial depth layers, 3D interactive card perspective tilt, and motion layers.
+- **Dev-Only Switcher Toolbar**: While running `npm run dev`, a floating preview toolbar appears at the bottom-right corner for 1-click previewing between designs.
+
+---
+
+## 11. Deployment to GitHub Pages
 
 A ready-to-use GitHub Actions workflow is provided at:
 `.github/workflows/deploy.yml`
@@ -242,7 +263,7 @@ If deploying to a repository subpath rather than a custom domain or root domain:
 
 ---
 
-## 11. Deployment to Vercel
+## 12. Deployment to Vercel
 
 Vercel provides automatic detection and zero-config deployment for Astro.
 
@@ -258,7 +279,7 @@ A `vercel.json` file is already included in the root with `cleanUrls: true` for 
 
 ---
 
-## 12. Deployment to Cloudflare Pages
+## 13. Deployment to Cloudflare Pages
 
 Cloudflare Pages provides global CDN edge hosting with fast TTFB.
 
@@ -277,7 +298,7 @@ A `public/_headers` file is already included in the project to automatically app
 
 ---
 
-## 13. Custom-Domain Configuration and Base-Path Considerations
+## 14. Custom-Domain Configuration and Base-Path Considerations
 
 When using a custom domain (e.g. `piyushgupta.dev`):
 - Ensure `ASTRO_BASE_URL` is set to `/` (the default).
@@ -288,7 +309,7 @@ When using a custom domain (e.g. `piyushgupta.dev`):
 
 ---
 
-## 14. Troubleshooting Common Deployment Issues
+## 15. Troubleshooting Common Deployment Issues
 
 | Issue | Cause | Solution |
 | :--- | :--- | :--- |

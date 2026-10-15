@@ -1,0 +1,53 @@
+---
+import { siteThemeConfig } from '../config/theme';
+import { getAssetUrl } from '../utils/url';
+
+interface Props {
+  currentVariant?: string;
+}
+
+const { currentVariant } = Astro.props;
+const isDev = import.meta.env.DEV;
+---
+
+{isDev && (
+  <aside
+    id="dev-version-toolbar"
+    class="fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white/95 dark:bg-zinc-900/95 px-3 py-1.5 shadow-xl backdrop-blur-md text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-transform"
+    aria-label="Development Version Switcher"
+  >
+    <div class="flex items-center gap-1.5 pr-1 border-r border-zinc-200 dark:border-zinc-700">
+      <span class="inline-block h-2 w-2 rounded-full bg-amber-500 animate-pulse"></span>
+      <span class="font-bold text-[11px] uppercase tracking-wider text-amber-600 dark:text-amber-400">
+        Dev Switcher
+      </span>
+    </div>
+
+    <div class="flex items-center gap-1">
+      {siteThemeConfig.availableThemes.map((theme) => {
+        const isActive = currentVariant === theme.id || (!currentVariant && siteThemeConfig.activeTheme === theme.id);
+        return (
+          <a
+            href={getAssetUrl(theme.previewPath)}
+            class={`px-2.5 py-1 rounded-full text-[11px] font-semibold transition-colors ${
+              isActive
+                ? 'bg-sky-600 text-white dark:bg-sky-500 dark:text-zinc-950 shadow-xs'
+                : 'hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-400'
+            }`}
+            title={theme.description}
+          >
+            {theme.name.replace('Clean ', '').replace(' & Motion', '')}
+          </a>
+        );
+      })}
+    </div>
+
+    <a
+      href={getAssetUrl('/')}
+      class="ml-1 pl-1.5 border-l border-zinc-200 dark:border-zinc-700 text-[10px] text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
+      title="View current activeTheme as rendered at root URL"
+    >
+      Root ({siteThemeConfig.activeTheme})
+    </a>
+  </aside>
+)}

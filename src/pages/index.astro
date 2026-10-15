@@ -1,26 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import Applications from '../components/Applications.astro';
-import DomainExpertise from '../components/DomainExpertise.astro';
-import Experience from '../components/Experience.astro';
-import Skills from '../components/Skills.astro';
-import About from '../components/About.astro';
-import Contact from '../components/Contact.astro';
+import MinimalTheme from '../components/themes/minimal/MinimalTheme.astro';
+import ModernTheme from '../components/themes/modern/ModernTheme.astro';
+import ParallaxTheme from '../components/themes/parallax/ParallaxTheme.astro';
 import { portfolioData } from '../data/portfolio';
+import { siteThemeConfig } from '../config/theme';
 
 const { profile } = portfolioData;
+const activeTheme = siteThemeConfig.activeTheme;
 ---
 
 <Layout
   title={`${profile.name} | ${profile.headline}`}
   description={profile.shortSummary}
+  currentVariant={activeTheme}
 >
-  <Hero />
-  <Applications />
-  <DomainExpertise />
-  <Experience />
-  <Skills />
-  <About />
-  <Contact />
+  {activeTheme === 'modern' ? (
+    <ModernTheme />
+  ) : activeTheme === 'parallax' ? (
+    <ParallaxTheme />
+  ) : (
+    <MinimalTheme />
+  )}
 </Layout>

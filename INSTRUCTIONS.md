@@ -16,13 +16,14 @@ This document provides complete, step-by-step instructions for running, customiz
 8. [Managing the Resume PDF](#8-managing-the-resume-pdf)
 9. [Adding Custom App Icons & Screenshots](#9-adding-custom-app-icons--screenshots)
 10. [Updating Contact & Social Media Links](#10-updating-contact--social-media-links)
-11. [Customizing Themes, Colors & SEO Metadata](#11-customizing-themes-colors--seo-metadata)
-12. [Deploying to GitHub Pages](#12-deploying-to-github-pages)
-13. [Deploying to Vercel](#13-deploying-to-vercel)
-14. [Deploying to Cloudflare Pages](#14-deploying-to-cloudflare-pages)
-15. [Custom Domain Configuration](#15-custom-domain-configuration)
-16. [Automated Testing & Quality Checks](#16-automated-testing--quality-checks)
-17. [Troubleshooting Guide](#17-troubleshooting-guide)
+11. [Theme & Version Management System (Zero-Distraction Public Release)](#11-theme--version-management-system-zero-distraction-public-release)
+12. [Customizing Themes, Colors & SEO Metadata](#12-customizing-themes-colors--seo-metadata)
+13. [Deploying to GitHub Pages](#13-deploying-to-github-pages)
+14. [Deploying to Vercel](#14-deploying-to-vercel)
+15. [Deploying to Cloudflare Pages](#15-deploying-to-cloudflare-pages)
+16. [Custom Domain Configuration](#16-custom-domain-configuration)
+17. [Automated Testing & Quality Checks](#17-automated-testing--quality-checks)
+18. [Troubleshooting Guide](#18-troubleshooting-guide)
 
 ---
 
@@ -281,7 +282,34 @@ contact: {
 
 ---
 
-## 11. Customizing Themes, Colors & SEO Metadata
+## 11. Theme & Version Management System (Zero-Distraction Public Release)
+
+The website features a dedicated **Version Management System** allowing you to test, compare, and finalize design themes locally without showing any switches, experimental badges, or distractions to public visitors or recruiters.
+
+### How It Works
+1. **Public Visitors See ONE Cohesive Portfolio**:
+   When visitors browse to your main URL (`/`), they see only the single theme you have designated as active.
+2. **Dev-Only Switcher Toolbar**:
+   During local development (`npm run dev`), a subtle floating preview toolbar appears at the bottom-right corner of the screen with 1-click pills: `[Minimal | Modern | Parallax]`.
+   - **Production Stripping**: When you run `npm run build`, Astro's compiler uses `import.meta.env.DEV` to **100% strip the toolbar** from the production build. It never appears on your live site.
+3. **1-Line Theme Finalization**:
+   In `src/config/theme.ts`, you control which theme is published to the public at `/`:
+   ```typescript
+   export const siteThemeConfig = {
+     activeTheme: 'minimal', // Change to 'modern' or 'parallax' anytime!
+   };
+   ```
+4. **Private Preview Routes**:
+   You can inspect each design variant directly at any time:
+   - `/preview/minimal`: Clean, understated, high-contrast engineering portfolio.
+   - `/preview/modern`: Glassmorphic cards, subtle gradient accents, and segmented filter controls.
+   - `/preview/parallax`: Spatial depth layers, 3D interactive card perspective tilt, and motion layers.
+5. **Adding Future Design Ideas**:
+   To test a new design in the future (e.g. `bento` or `terminal`), simply create a new folder under `src/components/themes/`, add it to `siteThemeConfig.availableThemes`, and preview it privately without touching your live portfolio!
+
+---
+
+## 12. Customizing Themes, Colors & SEO Metadata
 
 ### Accent Color Customization
 The site uses Tailwind's calibrated `sky` palette (Sky 600 in light mode, Sky 400 in dark mode).
@@ -298,7 +326,7 @@ Default values are automatically populated from `portfolioData.profile`.
 
 ---
 
-## 12. Deploying to GitHub Pages
+## 13. Deploying to GitHub Pages
 
 An automated GitHub Actions workflow is preconfigured at:
 `.github/workflows/deploy.yml`
@@ -330,7 +358,7 @@ An automated GitHub Actions workflow is preconfigured at:
 
 ---
 
-## 13. Deploying to Vercel
+## 14. Deploying to Vercel
 
 Vercel provides automatic zero-configuration static hosting for Astro projects.
 
@@ -349,7 +377,7 @@ Vercel provides automatic zero-configuration static hosting for Astro projects.
 
 ---
 
-## 14. Deploying to Cloudflare Pages
+## 15. Deploying to Cloudflare Pages
 
 Cloudflare Pages delivers instant builds and edge caching.
 
@@ -370,7 +398,7 @@ Cloudflare Pages delivers instant builds and edge caching.
 
 ---
 
-## 15. Custom Domain Configuration
+## 16. Custom Domain Configuration
 
 If you own a custom domain (e.g. `piyushgupta.dev` or `piyushkr.com`):
 
@@ -386,7 +414,7 @@ If you own a custom domain (e.g. `piyushgupta.dev` or `piyushkr.com`):
 
 ---
 
-## 16. Automated Testing & Quality Checks
+## 17. Automated Testing & Quality Checks
 
 Run the automated test suite before committing changes to ensure data and build integrity:
 
@@ -394,7 +422,7 @@ Run the automated test suite before committing changes to ensure data and build 
 # 1. Type check all Astro components and TypeScript files
 npm run check
 
-# 2. Run the 7 regression and validation tests
+# 2. Run the 11 regression and validation tests
 npm test
 
 # 3. Build static output
@@ -402,17 +430,21 @@ npm run build
 ```
 
 ### What the test suite checks:
-- Verification of all 8 application names and exact Google Play Store URLs.
+- Verification of all 8 application names and exact Google Play Store URLs across all routes.
+- Verification that all 8 WebP application icons exist in public and dist.
 - External links possess `rel="noopener noreferrer"`.
 - Verification that static resume files exist and are not empty.
 - Verification of semantic landmark tags (`<header>`, `<main>`, `<footer>`, `<nav>`).
 - Verification that `dist/404.html` exists and includes home navigation links.
 - Verification of SEO meta tags and Schema.org `Person` JSON-LD structured data.
 - Unit testing of `getDerivedDomains()` and `getUniqueDomains()` dynamic calculation logic.
+- Verification that all 3 preview routes (`preview/minimal`, `preview/modern`, `preview/parallax`) compile with full data integrity.
+- Verification that `DevVersionToolbar` is 100% stripped from production build.
+- Verification that `siteThemeConfig.activeTheme` is valid.
 
 ---
 
-## 17. Troubleshooting Guide
+## 18. Troubleshooting Guide
 
 | Issue | Root Cause | Solution |
 | :--- | :--- | :--- |

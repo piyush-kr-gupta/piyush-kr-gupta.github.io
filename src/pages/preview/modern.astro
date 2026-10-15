@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ModernTheme from '../../components/themes/modern/ModernTheme.astro';
+import { portfolioData } from '../../data/portfolio';
+
+const { profile } = portfolioData;
+---
+
+<Layout
+  title={`${profile.name} | ${profile.headline} (Modern Interactive Preview)`}
+  description={profile.shortSummary}
+  currentVariant="modern"
+>
+  <ModernTheme />
+</Layout>

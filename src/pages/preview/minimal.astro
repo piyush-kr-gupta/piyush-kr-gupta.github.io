@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MinimalTheme from '../../components/themes/minimal/MinimalTheme.astro';
+import { portfolioData } from '../../data/portfolio';
+
+const { profile } = portfolioData;
+---
+
+<Layout
+  title={`${profile.name} | ${profile.headline} (Clean Minimalist Preview)`}
+  description={profile.shortSummary}
+  currentVariant="minimal"
+>
+  <MinimalTheme />
+</Layout>
