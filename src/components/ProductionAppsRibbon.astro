@@ -16,34 +16,41 @@ const shortNames: Record<string, string> = {
 };
 ---
 
-<div class="mb-14 py-4 px-5 sm:px-8 rounded-3xl bg-white/70 dark:bg-slate-900/40 border border-zinc-200/80 dark:border-slate-800/80 backdrop-blur-md max-w-4xl mx-auto shadow-xs">
-  <div class="text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-slate-400 mb-3 text-center flex items-center justify-center gap-3">
-    <span class="w-8 h-px bg-zinc-200 dark:bg-slate-800"></span>
-    <span>Production Apps Engineered &amp; Scaled</span>
-    <span class="w-8 h-px bg-zinc-200 dark:bg-slate-800"></span>
+<div class="mb-12 sm:mb-16 py-4 px-4 sm:px-6 lg:px-8 rounded-3xl bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 backdrop-blur-md max-w-5xl mx-auto shadow-xs">
+  <div class="text-[11px] font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-3.5 text-center flex items-center justify-center gap-3">
+    <span class="w-8 sm:w-14 h-px bg-zinc-200 dark:bg-zinc-800"></span>
+    <span class="inline-flex items-center gap-2">
+      <span class="relative flex h-2 w-2">
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+      </span>
+      <span>Production Apps Engineered &amp; Scaled</span>
+    </span>
+    <span class="w-8 sm:w-14 h-px bg-zinc-200 dark:bg-zinc-800"></span>
   </div>
-  <div class="flex items-center justify-center gap-3 sm:gap-6 flex-wrap">
+
+  <div class="flex items-center justify-center gap-2 sm:gap-4 lg:gap-5 flex-wrap">
     {applications.map((app) => {
       const displayName = shortNames[app.id] || app.name;
       return (
         <a
           href={`#${app.id}`}
-          class="flex items-center gap-2 group cursor-pointer transition-transform"
+          class="flex items-center gap-2 sm:gap-2.5 p-1.5 sm:p-2 -m-1 rounded-2xl hover:bg-zinc-100/80 dark:hover:bg-zinc-800/60 transition-all duration-200 group cursor-pointer focus-visible:ring-2 focus-visible:ring-sky-500"
           title={`${displayName} (${app.downloads || 'Production'})`}
         >
           <img
             alt={displayName}
-            class="w-10 h-10 rounded-2xl object-cover shadow-xs border border-zinc-200 dark:border-slate-700/80 bg-zinc-100 dark:bg-slate-950 group-hover:scale-110 group-hover:border-sky-500 dark:group-hover:border-sky-400 transition-all shrink-0"
+            class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl object-cover shadow-2xs border border-zinc-200/90 dark:border-zinc-700/80 bg-zinc-100 dark:bg-zinc-800 group-hover:scale-105 group-hover:border-sky-500 dark:group-hover:border-sky-400 transition-all duration-200 shrink-0"
             loading="lazy"
-            width="40"
-            height="40"
+            width="44"
+            height="44"
             src={getAssetUrl(app.iconPath || '')}
           />
           <div class="hidden lg:block text-left">
-            <div class="text-xs font-bold text-zinc-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors leading-tight">
+            <div class="text-xs font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors leading-tight">
               {displayName}
             </div>
-            <div class="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">
+            <div class="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold whitespace-nowrap">
               {app.downloads}
             </div>
           </div>
