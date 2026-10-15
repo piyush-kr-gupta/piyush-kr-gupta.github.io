@@ -1,0 +1,27 @@
+{
+  "name": "piyush-kumar-gupta-portfolio",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Professional portfolio for Piyush Kumar Gupta - Senior Android & Flutter Engineer",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "test": "node --experimental-strip-types --test tests/*.test.js"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.0.9",
+    "astro": "^7.3.8",
+    "tailwindcss": "^4.0.9"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@types/node": "^26.6.5",
+    "typescript": "^5.7.3"
+  }
+}

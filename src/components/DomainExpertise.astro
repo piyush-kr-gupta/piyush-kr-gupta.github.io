@@ -1,0 +1,119 @@
+---
+import { portfolioData, getDerivedDomains } from '../data/portfolio';
+
+const domains = getDerivedDomains(portfolioData.applications);
+---
+
+<section id="domains" class="py-16 md:py-24 border-b border-zinc-200/80 dark:border-zinc-800/80 scroll-mt-16 bg-zinc-50/50 dark:bg-zinc-950/40">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="max-w-2xl mb-12">
+      <h2 class="text-xs font-semibold uppercase tracking-wider text-sky-600 dark:text-sky-400 mb-2">
+        Domain Expertise
+      </h2>
+      <p class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        Multi-Industry Domain Exposure
+      </p>
+      <p class="mt-3 text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        Extensive hands-on engineering across varied operational environments—from high-concurrency quick commerce to mission-critical healthcare diagnostics and B2B road freight.
+      </p>
+    </div>
+
+    <!-- Domains Grid (Dynamically rendered from application dataset) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {domains.map((domain) => (
+        <div class="group flex flex-col justify-between rounded-xl border border-zinc-200/90 dark:border-zinc-800 bg-white dark:bg-zinc-900/80 p-6 hover:border-zinc-400 dark:hover:border-zinc-700 transition-all hover:shadow-xs">
+          <div>
+            <!-- Icon & Count -->
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-100 dark:bg-zinc-800 text-sky-600 dark:text-sky-400 border border-zinc-200 dark:border-zinc-700">
+                {domain.category === 'quick-commerce' && (
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                )}
+                {domain.category === 'logistics' && (
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                  </svg>
+                )}
+                {domain.category === 'healthcare' && (
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                )}
+                {domain.category === 'entertainment' && (
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+                  </svg>
+                )}
+                {domain.category === 'social' && (
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                )}
+              </div>
+              <span class="inline-flex items-center rounded-md bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                {domain.count} {domain.count === 1 ? 'App' : 'Apps'}
+              </span>
+            </div>
+
+            <!-- Title -->
+            <h3 class="text-lg font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+              {domain.name}
+            </h3>
+
+            <!-- Description -->
+            <p class="mt-2 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              {domain.description}
+            </p>
+
+            <!-- Associated Apps List -->
+            <div class="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800/80">
+              <p class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-2">
+                Applications
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                {domain.appNames.map((appName) => (
+                  <span class="inline-flex items-center rounded bg-zinc-100 dark:bg-zinc-800/60 px-2 py-0.5 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+                    {appName}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- Filter navigation button -->
+          <div class="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800/80">
+            <button
+              type="button"
+              class="domain-filter-trigger inline-flex items-center gap-1.5 text-xs font-semibold text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors focus-visible:ring-2 focus-visible:ring-sky-500 rounded p-1 -m-1"
+              data-domain-target={domain.name}
+            >
+              <span>View filtered applications</span>
+              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Domain card click-to-filter binding
+  const domainTriggers = document.querySelectorAll('.domain-filter-trigger');
+
+  domainTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', (e) => {
+      const btn = e.currentTarget as HTMLElement;
+      const targetDomain = btn.dataset.domainTarget;
+      if (targetDomain && typeof (window as any).filterPortfolioByDomain === 'function') {
+        (window as any).filterPortfolioByDomain(targetDomain);
+      }
+    });
+  });
+</script>

@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Applications from '../components/Applications.astro';
+import DomainExpertise from '../components/DomainExpertise.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
+import { portfolioData } from '../data/portfolio';
+
+const { profile } = portfolioData;
+---
+
+<Layout
+  title={`${profile.name} | ${profile.headline}`}
+  description={profile.shortSummary}
+>
+  <Hero />
+  <Applications />
+  <DomainExpertise />
+  <Experience />
+  <Skills />
+  <About />
+  <Contact />
+</Layout>
