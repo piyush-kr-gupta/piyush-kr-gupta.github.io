@@ -237,17 +237,29 @@ The downloadable resume is served statically from `public/`.
 
 By default, every card renders a clean, minimal typography badge with the application initials (`BB`, `VH`, `CP`, etc.).
 
-To use custom artwork or icons:
-1. Place image files in `public/images/apps/` (e.g. `public/images/apps/bigbasket.png`).
-2. Add the `iconPath` property to the application in `src/data/portfolio.ts`:
+All 8 applications in the showcase are configured with high-resolution WebP icons from `portfolio_app_icons/` (stored in `public/images/apps/`):
+
+- **BigBasket**: `/images/apps/bigbasket.webp`
+- **BigBasket Delivery Partner App**: `/images/apps/bbdelivery.webp`
+- **Vahak**: `/images/apps/vahak_logo.webp`
+- **CrelioHealth for Patients**: `/images/apps/creliopatients.webp`
+- **CrelioHealth for Doctors**: `/images/apps/creliodoctors.webp`
+- **CrelioHealth Inventory**: `/images/apps/crelioinventory.webp`
+- **TV Lens / OTT Watch**: `/images/apps/ottwatch.webp`
+- **MyMandir**: `/images/apps/mymandir.webp`
+
+To add an icon for a new app:
+1. Place the image file in `public/images/apps/` (e.g. `public/images/apps/newapp.webp`).
+2. Add the `iconPath` property to the application entry in `src/data/portfolio.ts`:
    ```typescript
    {
-     id: 'bigbasket',
-     name: 'BigBasket',
-     iconPath: '/images/apps/bigbasket.png',
+     id: 'newapp',
+     name: 'New App',
+     iconPath: '/images/apps/newapp.webp',
      // ...
    }
    ```
+If `iconPath` is omitted, the application card automatically falls back to clean typography initials.
 
 ---
 

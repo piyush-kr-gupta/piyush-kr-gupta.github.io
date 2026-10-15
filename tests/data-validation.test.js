@@ -68,6 +68,28 @@ test('Portfolio Data Integrity: Built index.html contains all 8 required applica
   }
 });
 
+test('Application Icons: All 8 app icons are present in public, copied to dist, and rendered in HTML', () => {
+  const html = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
+  const expectedIcons = [
+    'bigbasket.webp',
+    'bbdelivery.webp',
+    'vahak_logo.webp',
+    'creliopatients.webp',
+    'creliodoctors.webp',
+    'crelioinventory.webp',
+    'ottwatch.webp',
+    'mymandir.webp',
+  ];
+
+  for (const icon of expectedIcons) {
+    const publicPath = path.resolve('public/images/apps', icon);
+    const distPath = path.resolve('dist/images/apps', icon);
+    assert.ok(fs.existsSync(publicPath), `public/images/apps/${icon} must exist`);
+    assert.ok(fs.existsSync(distPath), `dist/images/apps/${icon} must exist in production build`);
+    assert.ok(html.includes(icon), `Built HTML must reference icon ${icon}`);
+  }
+});
+
 test('Portfolio Data Integrity: Security attributes on external links', () => {
   const html = fs.readFileSync(path.resolve('dist/index.html'), 'utf8');
   assert.ok(html.includes('rel="noopener noreferrer"'), 'External links must have rel="noopener noreferrer"');

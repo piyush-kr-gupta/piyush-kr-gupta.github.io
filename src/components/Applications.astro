@@ -1,5 +1,6 @@
 ---
 import { portfolioData, getUniqueDomains } from '../data/portfolio';
+import { getAssetUrl } from '../utils/url';
 
 const { applications } = portfolioData;
 const uniqueDomains = getUniqueDomains(applications);
@@ -121,9 +122,23 @@ const uniqueDomains = getUniqueDomains(applications);
             <!-- Card Header -->
             <div class="flex items-start justify-between gap-4 mb-4">
               <div class="flex items-center gap-3">
-                <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-800 font-bold text-sm tracking-tight text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700/80 group-hover:border-sky-500/50 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
-                  {app.initials}
-                </div>
+                {app.iconPath ? (
+                  <div class="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-zinc-200/90 dark:border-zinc-700/80 bg-zinc-100 dark:bg-zinc-800 shadow-xs group-hover:border-sky-500/50 transition-colors">
+                    <img
+                      src={getAssetUrl(app.iconPath)}
+                      alt={`${app.name} icon`}
+                      width="48"
+                      height="48"
+                      loading="lazy"
+                      decoding="async"
+                      class="h-full w-full object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-800 font-bold text-sm tracking-tight text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700/80 group-hover:border-sky-500/50 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                    {app.initials}
+                  </div>
+                )}
                 <div>
                   <h3 class="text-lg font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
                     {app.name}
