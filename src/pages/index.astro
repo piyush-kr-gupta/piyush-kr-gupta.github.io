@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import BentoTheme from '../components/themes/bento/BentoTheme.astro';
+import CraftTheme from '../components/themes/craft/CraftTheme.astro';
 import MinimalTheme from '../components/themes/minimal/MinimalTheme.astro';
 import ModernTheme from '../components/themes/modern/ModernTheme.astro';
 import ParallaxTheme from '../components/themes/parallax/ParallaxTheme.astro';
@@ -18,6 +19,8 @@ const activeTheme = siteThemeConfig.activeTheme;
 >
   {activeTheme === 'bento' ? (
     <BentoTheme />
+  ) : activeTheme === 'craft' ? (
+    <CraftTheme />
   ) : activeTheme === 'modern' ? (
     <ModernTheme />
   ) : activeTheme === 'parallax' ? (

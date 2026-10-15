@@ -1,0 +1,604 @@
+---
+import { portfolioData, getUniqueDomains } from '../../../data/portfolio';
+import { getAssetUrl } from '../../../utils/url';
+
+const { applications, resume, contact } = portfolioData;
+const uniqueDomains = getUniqueDomains(applications);
+---
+
+<section id="work" class="py-16 md:py-24 border-b border-zinc-800/80 bg-zinc-950 text-zinc-100 scroll-mt-16 relative">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 pb-6 border-b border-zinc-800">
+      <div>
+        <div class="inline-flex items-center gap-2 rounded-full border border-sky-800/60 bg-sky-950/40 px-3 py-0.5 text-xs font-mono text-sky-400 mb-2">
+          CRAFT &bull; PRODUCTION SOFTWARE
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+          Commercial Mobile Applications
+        </h2>
+        <p class="mt-2 text-sm text-zinc-400 max-w-xl">
+          High-concurrency grocery delivery, multi-tenant LIMS diagnostics, real-time freight bidding, and regional media engines.
+        </p>
+      </div>
+
+      <!-- Quick Command Palette Trigger Button -->
+      <div>
+        <button
+          type="button"
+          id="craft-cmd-trigger-btn"
+          class="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900 px-3.5 py-2 text-xs font-mono text-zinc-300 hover:border-zinc-500 hover:text-white transition-all shadow-xs"
+        >
+          <svg class="h-4 w-4 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <span>Command Menu</span>
+          <kbd class="rounded border border-zinc-700 bg-zinc-800 px-1.5 py-0.5 text-[10px] text-zinc-400">⌘K</kbd>
+        </button>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="mb-10 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5 space-y-4">
+      
+      <!-- Search Input -->
+      <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+        <div class="relative flex-1 max-w-md">
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-zinc-500">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input
+            id="craft-search-input"
+            type="search"
+            placeholder="Search projects, domains, or technologies..."
+            class="w-full rounded-xl border border-zinc-700 bg-zinc-950 pl-10 pr-9 py-2 text-sm font-sans text-zinc-100 placeholder-zinc-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 focus:outline-none transition-all shadow-inner"
+            aria-label="Search applications"
+          />
+          <button
+            id="craft-clear-search"
+            type="button"
+            class="hidden absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-500 hover:text-zinc-200"
+            aria-label="Clear search"
+          >
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <span id="craft-results-count" class="text-xs font-mono text-zinc-400" aria-live="polite">
+            Showing {applications.length} of {applications.length} apps
+          </span>
+          <button
+            id="craft-reset-btn"
+            type="button"
+            class="hidden items-center gap-1 rounded-lg border border-zinc-700 bg-zinc-800 px-2.5 py-1 text-xs font-mono text-zinc-300 hover:border-zinc-500 hover:text-white transition-colors"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Domain Pills -->
+      <div class="pt-2 border-t border-zinc-800/80">
+        <div class="flex flex-wrap gap-1.5" id="craft-domain-pills">
+          <button
+            type="button"
+            class="craft-domain-btn active-pill px-3 py-1 rounded-lg text-xs font-mono font-semibold transition-all border border-zinc-100 bg-zinc-100 text-zinc-950 shadow-xs"
+            data-domain="all"
+          >
+            ALL [{applications.length}]
+          </button>
+          {uniqueDomains.map((domain) => (
+            <button
+              type="button"
+              class="craft-domain-btn px-3 py-1 rounded-lg text-xs font-mono border border-zinc-800 bg-zinc-900 text-zinc-400 hover:border-zinc-600 hover:text-zinc-200 transition-all"
+              data-domain={domain}
+            >
+              {domain}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Audience Filter -->
+      <div class="pt-2 border-t border-zinc-800/80 flex items-center gap-2 font-mono text-xs text-zinc-400">
+        <span class="text-zinc-500">Audience:</span>
+        <div class="flex items-center gap-1.5" id="craft-model-pills">
+          <button
+            type="button"
+            class="craft-model-btn active-model px-2 py-0.5 rounded text-xs font-semibold bg-white text-zinc-950"
+            data-model="all"
+          >
+            All
+          </button>
+          <button
+            type="button"
+            class="craft-model-btn px-2 py-0.5 rounded text-xs bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white"
+            data-model="B2C"
+          >
+            B2C
+          </button>
+          <button
+            type="button"
+            class="craft-model-btn px-2 py-0.5 rounded text-xs bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white"
+            data-model="B2B"
+          >
+            B2B
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Empty State -->
+    <div
+      id="craft-empty-state"
+      class="hidden rounded-2xl border border-dashed border-zinc-800 p-12 text-center my-6"
+    >
+      <p class="font-mono text-sm text-zinc-400">No applications match your filter.</p>
+      <button
+        id="craft-clear-filters-btn"
+        type="button"
+        class="mt-3 inline-flex items-center rounded-lg bg-zinc-800 px-3 py-1.5 font-mono text-xs text-zinc-200 hover:bg-zinc-700 transition-colors"
+      >
+        Clear Filters
+      </button>
+    </div>
+
+    <!-- Applications Grid -->
+    <div id="craft-applications-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {applications.map((app) => (
+        <article
+          class="craft-card group flex flex-col justify-between rounded-2xl border border-zinc-800/90 bg-zinc-900/60 p-6 sm:p-7 hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200 relative"
+          data-name={app.name.toLowerCase()}
+          data-domain={app.domain}
+          data-model={app.businessModel}
+          data-tech={(app.technologies || []).join(' ').toLowerCase()}
+        >
+          <div>
+            <!-- Card Header -->
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div class="flex items-center gap-3.5">
+                {app.iconPath ? (
+                  <img
+                    src={getAssetUrl(app.iconPath)}
+                    alt={`${app.name} icon`}
+                    class="h-12 w-12 rounded-xl object-cover border border-zinc-800 shrink-0 group-hover:border-zinc-700 transition-colors"
+                    loading="lazy"
+                    width="48"
+                    height="48"
+                  />
+                ) : (
+                  <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-zinc-800 font-mono font-bold text-sm text-zinc-200 border border-zinc-700">
+                    {app.initials}
+                  </div>
+                )}
+                <div>
+                  <h3 class="text-lg font-bold text-white group-hover:text-sky-400 transition-colors">
+                    {app.name}
+                  </h3>
+                  {app.company && (
+                    <p class="text-xs text-zinc-400 font-medium">
+                      {app.company}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <!-- Domain & Audience Badges -->
+              <div class="flex flex-col items-end gap-1 shrink-0 font-mono">
+                <span class="inline-flex items-center rounded border border-zinc-800 bg-zinc-950 px-2 py-0.5 text-[11px] font-medium text-zinc-300">
+                  {app.domain}
+                </span>
+                {app.businessModel !== 'Unspecified' && (
+                  <span class="inline-flex items-center rounded border border-sky-900/80 bg-sky-950/60 px-2 py-0.5 text-[10px] font-semibold text-sky-300">
+                    {app.businessModel}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <!-- Description -->
+            {app.description && (
+              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">
+                {app.description}
+              </p>
+            )}
+
+            <!-- Contributions -->
+            {app.highlights && app.highlights.length > 0 && (
+              <div class="pt-3 border-t border-zinc-800/80 mb-4">
+                <p class="text-[10px] font-mono uppercase tracking-wider text-zinc-500 mb-2">
+                  Key Technical Highlights:
+                </p>
+                <ul class="space-y-1.5 text-xs text-zinc-300">
+                  {app.highlights.map((highlight) => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-sky-400 font-mono text-xs mt-0.5">&gt;</span>
+                      <span class="leading-relaxed">{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+
+          <!-- Bottom: Tech Stack & Google Play Action -->
+          <div class="mt-4 pt-4 border-t border-zinc-800/80">
+            {app.technologies && app.technologies.length > 0 && (
+              <div class="flex flex-wrap gap-1.5 mb-4">
+                {app.technologies.map((tech) => (
+                  <span class="inline-flex items-center rounded border border-zinc-800 bg-zinc-950 px-2 py-0.5 text-[10px] font-mono text-zinc-400">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            <div class="pt-3 border-t border-zinc-800/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-6">
+              <a
+                href={app.playStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-xl bg-zinc-100 text-zinc-950 hover:bg-white px-3.5 py-2 text-xs font-semibold transition-all shadow-xs shrink-0 w-fit"
+                aria-label={`View ${app.name} on Google Play`}
+              >
+                <svg class="h-4 w-4 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3.609 1.814L13.792 12 3.61 22.186a1.5 1.5 0 0 1-.61-.75V2.564c.16-.328.384-.577.609-.75zm1.48-.958l11.45 6.61-2.072 2.072L5.089.856zm11.45 15.678l-11.45 6.61 9.378-9.378 2.072 2.072v.696zm.732-.423l3.655-2.11a1.5 1.5 0 0 0 0-2.597l-3.655-2.11-2.28 2.28 2.28 2.537z"/>
+                </svg>
+                <span>View on Google Play</span>
+                <svg class="h-3 w-3 ml-0.5 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+
+              {app.company && (
+                <div class="flex items-center gap-1.5 text-xs text-zinc-400 font-medium">
+                  <span class="inline-block h-1 w-1 rounded-full bg-zinc-600"></span>
+                  <span>{app.company}</span>
+                </div>
+              )}
+            </div>
+          </div>
+
+        </article>
+      ))}
+    </div>
+
+  </div>
+
+  <!-- Command Palette Modal Dialog (⌘K) -->
+  <div
+    id="craft-cmd-palette-backdrop"
+    class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-start justify-center pt-20 sm:pt-28 px-4"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Command Palette"
+  >
+    <div class="w-full max-w-xl rounded-2xl border border-zinc-700 bg-zinc-900 shadow-2xl overflow-hidden font-sans animate-in fade-in zoom-in-95 duration-150">
+      
+      <!-- Palette Search Header -->
+      <div class="flex items-center border-b border-zinc-800 px-4 py-3">
+        <svg class="h-5 w-5 text-zinc-400 shrink-0 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input
+          id="craft-cmd-input"
+          type="text"
+          placeholder="Type a command or search applications..."
+          class="w-full bg-transparent text-sm text-white placeholder-zinc-500 focus:outline-none"
+        />
+        <kbd id="craft-cmd-close-btn" class="cursor-pointer rounded border border-zinc-700 bg-zinc-800 px-2 py-0.5 text-xs font-mono text-zinc-400 hover:text-white">
+          ESC
+        </kbd>
+      </div>
+
+      <!-- Quick Command Results List -->
+      <div id="craft-cmd-results" class="max-h-80 overflow-y-auto p-2 space-y-1">
+        <div class="px-3 py-1.5 text-[11px] font-mono uppercase tracking-wider text-zinc-500">
+          Applications & Projects
+        </div>
+        {applications.map((app) => (
+          <a
+            href={app.playStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="craft-cmd-item flex items-center justify-between rounded-xl px-3 py-2 text-xs text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors"
+            data-search={`${app.name} ${app.domain} ${app.technologies.join(' ')}`}
+          >
+            <div class="flex items-center gap-2.5">
+              <span class="inline-block h-2 w-2 rounded-full bg-sky-500"></span>
+              <span class="font-medium text-white">{app.name}</span>
+              <span class="text-zinc-500 font-mono text-[11px]">({app.domain})</span>
+            </div>
+            <span class="text-[11px] font-mono text-zinc-400">View on Play Store &rarr;</span>
+          </a>
+        ))}
+
+        <div class="pt-2 px-3 py-1 text-[11px] font-mono uppercase tracking-wider text-zinc-500 border-t border-zinc-800/80">
+          Navigation & Actions
+        </div>
+        {resume.available && (
+          <a
+            href={getAssetUrl(resume.downloadPath)}
+            download={resume.downloadFilename}
+            class="craft-cmd-item flex items-center justify-between rounded-xl px-3 py-2 text-xs text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors"
+            data-search="resume download cv curriculum vitae"
+          >
+            <div class="flex items-center gap-2.5">
+              <span class="inline-block h-2 w-2 rounded-full bg-emerald-500"></span>
+              <span class="font-medium text-white">Download Resume (PDF)</span>
+            </div>
+            <span class="text-[11px] font-mono text-zinc-400">Piyush_Kumar_Gupta_Resume.pdf</span>
+          </a>
+        )}
+        {contact.linkedin && (
+          <a
+            href={contact.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="craft-cmd-item flex items-center justify-between rounded-xl px-3 py-2 text-xs text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors"
+            data-search="linkedin profile connect"
+          >
+            <div class="flex items-center gap-2.5">
+              <span class="inline-block h-2 w-2 rounded-full bg-sky-400"></span>
+              <span class="font-medium text-white">LinkedIn Profile</span>
+            </div>
+            <span class="text-[11px] font-mono text-zinc-400">External &rarr;</span>
+          </a>
+        )}
+        {contact.github && (
+          <a
+            href={contact.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="craft-cmd-item flex items-center justify-between rounded-xl px-3 py-2 text-xs text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors"
+            data-search="github code repositories git"
+          >
+            <div class="flex items-center gap-2.5">
+              <span class="inline-block h-2 w-2 rounded-full bg-zinc-400"></span>
+              <span class="font-medium text-white">GitHub Profile</span>
+            </div>
+            <span class="text-[11px] font-mono text-zinc-400">External &rarr;</span>
+          </a>
+        )}
+      </div>
+
+      <!-- Footer Info -->
+      <div class="border-t border-zinc-800 px-4 py-2 flex items-center justify-between text-[11px] font-mono text-zinc-500">
+        <span>Navigate with mouse or Tab &bull; ESC to exit</span>
+        <span>Linear Dark Craft</span>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<script>
+  let activeDomain = 'all';
+  let activeModel = 'all';
+  let searchQuery = '';
+
+  const searchInput = document.getElementById('craft-search-input') as HTMLInputElement | null;
+  const clearSearchBtn = document.getElementById('craft-clear-search');
+  const resultsCount = document.getElementById('craft-results-count');
+  const resetBtn = document.getElementById('craft-reset-btn');
+  const emptyState = document.getElementById('craft-empty-state');
+  const clearFiltersBtn = document.getElementById('craft-clear-filters-btn');
+  const cards = document.querySelectorAll('.craft-card');
+  const domainButtons = document.querySelectorAll('.craft-domain-btn');
+  const modelButtons = document.querySelectorAll('.craft-model-btn');
+  const totalCount = cards.length;
+
+  function filterCards() {
+    let visibleCount = 0;
+    const query = searchQuery.trim().toLowerCase();
+
+    cards.forEach((card) => {
+      const el = card as HTMLElement;
+      const name = el.getAttribute('data-name') || '';
+      const domain = el.getAttribute('data-domain') || '';
+      const model = el.getAttribute('data-model') || '';
+      const tech = el.getAttribute('data-tech') || '';
+
+      const matchesDomain = activeDomain === 'all' || domain === activeDomain;
+      const matchesModel = activeModel === 'all' || model === activeModel;
+      const matchesSearch =
+        query === '' ||
+        name.includes(query) ||
+        domain.toLowerCase().includes(query) ||
+        tech.includes(query);
+
+      if (matchesDomain && matchesModel && matchesSearch) {
+        el.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        el.classList.add('hidden');
+      }
+    });
+
+    if (resultsCount) {
+      resultsCount.textContent = `Showing ${visibleCount} of ${totalCount} apps`;
+    }
+
+    if (emptyState) {
+      if (visibleCount === 0) {
+        emptyState.classList.remove('hidden');
+      } else {
+        emptyState.classList.add('hidden');
+      }
+    }
+
+    const isFiltered = activeDomain !== 'all' || activeModel !== 'all' || query !== '';
+    if (resetBtn) {
+      if (isFiltered) {
+        resetBtn.classList.remove('hidden');
+        resetBtn.classList.add('inline-flex');
+      } else {
+        resetBtn.classList.remove('inline-flex');
+        resetBtn.classList.add('hidden');
+      }
+    }
+  }
+
+  searchInput?.addEventListener('input', (e) => {
+    searchQuery = (e.target as HTMLInputElement).value;
+    if (clearSearchBtn) {
+      if (searchQuery.length > 0) {
+        clearSearchBtn.classList.remove('hidden');
+      } else {
+        clearSearchBtn.classList.add('hidden');
+      }
+    }
+    filterCards();
+  });
+
+  clearSearchBtn?.addEventListener('click', () => {
+    if (searchInput) {
+      searchInput.value = '';
+      searchQuery = '';
+      clearSearchBtn.classList.add('hidden');
+      searchInput.focus();
+      filterCards();
+    }
+  });
+
+  domainButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      domainButtons.forEach((b) => {
+        b.classList.remove('border-zinc-100', 'bg-zinc-100', 'text-zinc-950');
+        b.classList.add('border-zinc-800', 'bg-zinc-900', 'text-zinc-400');
+      });
+
+      btn.classList.add('border-zinc-100', 'bg-zinc-100', 'text-zinc-950');
+      btn.classList.remove('border-zinc-800', 'bg-zinc-900', 'text-zinc-400');
+
+      activeDomain = btn.getAttribute('data-domain') || 'all';
+      filterCards();
+    });
+  });
+
+  modelButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      modelButtons.forEach((b) => {
+        b.classList.remove('bg-white', 'text-zinc-950');
+        b.classList.add('bg-zinc-900', 'border', 'border-zinc-800', 'text-zinc-400');
+      });
+
+      btn.classList.add('bg-white', 'text-zinc-950');
+      btn.classList.remove('bg-zinc-900', 'border', 'border-zinc-800', 'text-zinc-400');
+
+      activeModel = btn.getAttribute('data-model') || 'all';
+      filterCards();
+    });
+  });
+
+  function resetAll() {
+    activeDomain = 'all';
+    activeModel = 'all';
+    searchQuery = '';
+    if (searchInput) {
+      searchInput.value = '';
+    }
+    if (clearSearchBtn) {
+      clearSearchBtn.classList.add('hidden');
+    }
+
+    domainButtons.forEach((b) => {
+      const isAll = b.getAttribute('data-domain') === 'all';
+      if (isAll) {
+        b.classList.add('border-zinc-100', 'bg-zinc-100', 'text-zinc-950');
+        b.classList.remove('border-zinc-800', 'bg-zinc-900', 'text-zinc-400');
+      } else {
+        b.classList.remove('border-zinc-100', 'bg-zinc-100', 'text-zinc-950');
+        b.classList.add('border-zinc-800', 'bg-zinc-900', 'text-zinc-400');
+      }
+    });
+
+    modelButtons.forEach((b) => {
+      const isAll = b.getAttribute('data-model') === 'all';
+      if (isAll) {
+        b.classList.add('bg-white', 'text-zinc-950');
+        b.classList.remove('bg-zinc-900', 'border', 'border-zinc-800', 'text-zinc-400');
+      } else {
+        b.classList.remove('bg-white', 'text-zinc-950');
+        b.classList.add('bg-zinc-900', 'border', 'border-zinc-800', 'text-zinc-400');
+      }
+    });
+
+    filterCards();
+  }
+
+  resetBtn?.addEventListener('click', resetAll);
+  clearFiltersBtn?.addEventListener('click', resetAll);
+
+  // Command Palette Logic
+  const cmdBackdrop = document.getElementById('craft-cmd-palette-backdrop');
+  const cmdTriggerBtn = document.getElementById('craft-cmd-trigger-btn');
+  const cmdCloseBtn = document.getElementById('craft-cmd-close-btn');
+  const cmdInput = document.getElementById('craft-cmd-input') as HTMLInputElement | null;
+  const cmdItems = document.querySelectorAll('.craft-cmd-item');
+
+  function openCommandPalette() {
+    if (cmdBackdrop) {
+      cmdBackdrop.classList.remove('hidden');
+      if (cmdInput) {
+        cmdInput.value = '';
+        cmdInput.focus();
+      }
+      cmdItems.forEach((item) => (item as HTMLElement).classList.remove('hidden'));
+    }
+  }
+
+  function closeCommandPalette() {
+    if (cmdBackdrop) {
+      cmdBackdrop.classList.add('hidden');
+    }
+  }
+
+  cmdTriggerBtn?.addEventListener('click', openCommandPalette);
+  cmdCloseBtn?.addEventListener('click', closeCommandPalette);
+
+  // Close when clicking outside dialog
+  cmdBackdrop?.addEventListener('click', (e) => {
+    if (e.target === cmdBackdrop) {
+      closeCommandPalette();
+    }
+  });
+
+  // Global keydown for Cmd+K and Esc
+  window.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      if (cmdBackdrop?.classList.contains('hidden')) {
+        openCommandPalette();
+      } else {
+        closeCommandPalette();
+      }
+    } else if (e.key === 'Escape' && !cmdBackdrop?.classList.contains('hidden')) {
+      closeCommandPalette();
+    }
+  });
+
+  window.addEventListener('toggle-command-palette', openCommandPalette);
+
+  // Command search filtering
+  cmdInput?.addEventListener('input', (e) => {
+    const q = (e.target as HTMLInputElement).value.trim().toLowerCase();
+    cmdItems.forEach((item) => {
+      const el = item as HTMLElement;
+      const searchTarget = (el.getAttribute('data-search') || '').toLowerCase();
+      if (q === '' || searchTarget.includes(q)) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
+    });
+  });
+</script>

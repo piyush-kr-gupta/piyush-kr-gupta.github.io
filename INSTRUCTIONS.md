@@ -290,18 +290,19 @@ The website features a dedicated **Version Management System** allowing you to t
 1. **Public Visitors See ONE Cohesive Portfolio**:
    When visitors browse to your main URL (`/`), they see only the single theme you have designated as active (currently set to **Engineering Bento Showcase**).
 2. **Dev-Only Switcher Toolbar**:
-   During local development (`npm run dev`), a subtle floating preview toolbar appears at the bottom-right corner of the screen with 1-click pills: `[Bento | Minimal | Modern | Parallax]`.
+   During local development (`npm run dev`), a subtle floating preview toolbar appears at the bottom-right corner of the screen with 1-click pills: `[Bento | Craft | Minimal | Modern | Parallax]`.
    - **Production Stripping**: When you run `npm run build`, Astro's compiler uses `import.meta.env.DEV` to **100% strip the toolbar** from the production build. It never appears on your live site.
 3. **1-Line Theme Finalization**:
    In `src/config/theme.ts`, you control which theme is published to the public at `/`:
    ```typescript
    export const siteThemeConfig = {
-     activeTheme: 'bento', // Set to 'bento' (recommended default), 'minimal', 'modern', or 'parallax'
+     activeTheme: 'bento', // Set to 'bento' (default), 'craft', 'minimal', 'modern', or 'parallax'
    };
    ```
 4. **Private Preview Routes**:
    You can inspect each design variant directly at any time:
    - `/` (or `/preview/bento`): **Engineering Bento Showcase** — Asymmetric bento grid spotlighting BigBasket at scale, architecture benchmarks, and mobile craft.
+   - `/preview/craft`: **Linear Dark Craft** — Raycast/Linear aesthetic, razor-sharp 1px hairline borders, micro-glows, and interactive Cmd+K command palette.
    - `/preview/minimal`: **Clean Minimalist** — Understated, high-contrast, editorial engineering portfolio.
    - `/preview/modern`: **Modern Interactive** — Glassmorphic cards, subtle gradient accents, and segmented filter controls.
    - `/preview/parallax`: **Parallax & Motion** — Spatial depth layers, 3D interactive card perspective tilt, and motion layers.

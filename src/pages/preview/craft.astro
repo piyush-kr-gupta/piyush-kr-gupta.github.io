@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CraftTheme from '../../components/themes/craft/CraftTheme.astro';
+import { portfolioData } from '../../data/portfolio';
+
+const { profile } = portfolioData;
+---
+
+<Layout
+  title={`${profile.name} | ${profile.headline} (Linear Dark Craft)`}
+  description={profile.shortSummary}
+  currentVariant="craft"
+>
+  <CraftTheme />
+</Layout>
