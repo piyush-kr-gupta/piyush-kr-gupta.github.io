@@ -26,6 +26,7 @@ export interface Application {
   technologies: string[];
   company?: string;
   featured?: boolean;
+  downloads?: string;
   // Optional local asset path (e.g. '/images/apps/bigbasket.png')
   iconPath?: string;
   // Fallback visual initials
@@ -99,10 +100,11 @@ export const portfolioData: PortfolioData = {
     experienceYears: '6.5+ Years',
     location: 'Bengaluru, India',
     shortSummary:
-      'Senior Mobile Engineer with 6.5+ years of experience building high-performance Android and cross-platform mobile applications. Specialized in Kotlin, Android SDK, Jetpack Compose, Flutter, Clean Architecture, and progressive migrations for platforms serving tens of millions of users.',
+      'Senior Mobile Engineer with 6.5+ years of experience building high-performance Android and cross-platform mobile applications with over 120M+ cumulative Google Play downloads. Specialized in Kotlin, Android SDK, Jetpack Compose, Flutter, Clean Architecture, and progressive migrations for platforms serving tens of millions of users.',
     extendedBio:
-      'My engineering philosophy centers on clean architecture, maintainability, and measurable runtime performance. Over 6.5+ years, I have architected and delivered mobile solutions across diverse domains—including large-scale quick commerce, logistics marketplaces, healthcare diagnostic suites, and content platforms. I specialize in building robust apps with Kotlin and Flutter, modernizing legacy Java codebases, streamlining state management with BLoC and MVVM, and driving crash rates down in production.',
+      'My engineering philosophy centers on clean architecture, maintainability, and measurable runtime performance. Over 6.5+ years, I have architected and delivered mobile solutions across diverse domains—including large-scale quick commerce, logistics marketplaces, healthcare diagnostic suites, and content platforms with 120M+ total downloads. I specialize in building robust apps with Kotlin and Flutter, modernizing legacy Java codebases, streamlining state management with BLoC and MVVM, and driving crash rates down in production.',
     keyHighlights: [
+      '120M+ Cumulative Google Play Downloads Across 8 Apps',
       'Native Android (Kotlin & Java) & Cross-Platform Flutter',
       'Clean Architecture, MVVM, MVI & BLoC Patterns',
       'Modernization & Java-to-Kotlin Large-Scale Migrations',
@@ -192,6 +194,7 @@ export const portfolioData: PortfolioData = {
       technologies: ['Flutter', 'Dart', 'BLoC', 'Lottie', 'Rive', 'REST APIs', 'Backend-Driven UI'],
       company: 'Recrosoft Technologies (Client: BigBasket)',
       featured: true,
+      downloads: '100M+ Downloads',
       iconPath: '/images/apps/bigbasket.webp',
       initials: 'BB',
       domainCategory: 'quick-commerce',
@@ -222,6 +225,7 @@ export const portfolioData: PortfolioData = {
       ],
       company: 'Recrosoft Technologies (Client: BigBasket)',
       featured: true,
+      downloads: '1M+ Downloads',
       iconPath: '/images/apps/bbdelivery.webp',
       initials: 'DP',
       domainCategory: 'quick-commerce',
@@ -244,6 +248,7 @@ export const portfolioData: PortfolioData = {
       technologies: ['Flutter', 'Dart', 'Kotlin', 'BLoC', 'MVVM', 'Method Channels', 'REST APIs'],
       company: 'Epictus Solutions India Pvt. Ltd - Vahak',
       featured: true,
+      downloads: '5M+ Downloads',
       iconPath: '/images/apps/vahak_logo.webp',
       initials: 'VH',
       domainCategory: 'logistics',
@@ -274,6 +279,7 @@ export const portfolioData: PortfolioData = {
       ],
       company: 'Creliant Software Pvt. Ltd.',
       featured: true,
+      downloads: '5L+ Downloads',
       iconPath: '/images/apps/creliopatients.webp',
       initials: 'CP',
       domainCategory: 'healthcare',
@@ -294,6 +300,7 @@ export const portfolioData: PortfolioData = {
       ],
       technologies: ['Kotlin', 'Android SDK', 'Hilt', 'Coroutines', 'Room', 'Retrofit', 'MVVM'],
       company: 'Creliant Software Pvt. Ltd.',
+      downloads: '10K+ Downloads',
       iconPath: '/images/apps/creliodoctors.webp',
       initials: 'CD',
       domainCategory: 'healthcare',
@@ -314,6 +321,7 @@ export const portfolioData: PortfolioData = {
       ],
       technologies: ['Kotlin', 'Android SDK', 'Swift (iOS)', 'Clean Architecture', 'Room', 'Retrofit'],
       company: 'Creliant Software Pvt. Ltd.',
+      downloads: '100+ Downloads',
       iconPath: '/images/apps/crelioinventory.webp',
       initials: 'CI',
       domainCategory: 'healthcare',
@@ -342,6 +350,7 @@ export const portfolioData: PortfolioData = {
         'Picasso',
       ],
       company: 'Appyhigh Technology LLP',
+      downloads: '10M+ Downloads',
       iconPath: '/images/apps/ottwatch.webp',
       initials: 'TL',
       domainCategory: 'entertainment',
@@ -369,6 +378,7 @@ export const portfolioData: PortfolioData = {
         'Localization',
       ],
       company: 'Bakbak Technologies Pvt Ltd',
+      downloads: '5M+ Downloads',
       iconPath: '/images/apps/mymandir.webp',
       initials: 'MM',
       domainCategory: 'social',

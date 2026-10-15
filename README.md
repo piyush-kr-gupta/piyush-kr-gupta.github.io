@@ -1,332 +1,296 @@
-# Piyush Kumar Gupta — Senior Android & Flutter Engineer Portfolio
+# Hi, I'm Piyush Kumar Gupta 👋
 
-A modern, fast, accessible, and responsive developer portfolio website built for a **Senior Mobile Engineer (Android & Flutter)** with extensive commercial experience across Quick Commerce, Healthcare, Transport Logistics, and Social Entertainment.
+### Senior Android & Flutter Engineer
 
-Built with **Astro**, **Tailwind CSS v4**, and **TypeScript**, generating 100% static HTML at build time with zero server or runtime database dependencies.
+I'm a Senior Mobile Engineer with **6.5+ years of experience** designing, building, and scaling high-performance Android and cross-platform Flutter applications. Over the years, I've had the opportunity to build and scale mobile products with over **120M+ cumulative Google Play downloads**—from high-throughput quick-commerce workflows at BigBasket to B2B logistics networks at Vahak, mission-critical healthcare apps at CrelioHealth, and vernacular social platforms at MyMandir.
 
----
-
-## Table of Contents
-
-1. [Prerequisites and Local Development](#1-prerequisites-and-local-development)
-2. [Installation and Build Commands](#2-installation-and-build-commands)
-3. [How to Edit the Portfolio Configuration](#3-how-to-edit-the-portfolio-configuration)
-4. [How to Add a New Application and Business Domain](#4-how-to-add-a-new-application-and-business-domain)
-5. [How to Modify Skills and Professional Experience](#5-how-to-modify-skills-and-professional-experience)
-6. [How to Replace the Resume PDF](#6-how-to-replace-the-resume-pdf)
-7. [How to Add or Replace Local Application Images](#7-how-to-add-or-replace-local-application-images)
-8. [How to Update LinkedIn, GitHub, and Email Links](#8-how-to-update-linkedin-github-and-email-links)
-9. [How to Change Site Title, Description, Accent Color, and Theme Defaults](#9-how-to-change-site-title-description-accent-color-and-theme-defaults)
-10. [Version Management & Design Themes](#10-version-management--design-themes)
-11. [Deployment to GitHub Pages](#11-deployment-to-github-pages)
-12. [Deployment to Vercel](#12-deployment-to-vercel)
-13. [Deployment to Cloudflare Pages](#13-deployment-to-cloudflare-pages)
-14. [Custom-Domain Configuration and Base-Path Considerations](#14-custom-domain-configuration-and-base-path-considerations)
-15. [Troubleshooting Common Deployment Issues](#15-troubleshooting-common-deployment-issues)
+[![Location](https://img.shields.io/badge/Location-Bengaluru%2C%20India-blue)](#get-in-touch)
+[![Experience](https://img.shields.io/badge/Experience-6.5%2B%20Years-emerald)](#at-a-glance)
+[![Google Play Downloads](https://img.shields.io/badge/Google%20Play-120M%2B%20Downloads-success)](#google-play-downloads-at-a-glance)
+[![Primary Stack](https://img.shields.io/badge/Stack-Kotlin%20%7C%20Flutter%20%7C%20Android%20SDK-purple)](#technologies--tools-i-use)
+[![Commercial Apps](https://img.shields.io/badge/Apps-8%20Production%20Apps-orange)](#apps-ive-built--scaled)
 
 ---
 
-## 1. Prerequisites and Local Development
+## What I Do & How I Work
 
-- **Node.js**: `v20.0.0` or higher (`v22+` recommended).
-- **npm**: `v10.0.0` or higher.
-- A modern browser with ES6 support.
+My philosophy as an engineer is simple: write clean, maintainable code, build architectures that can grow with the team, and care deeply about what end users actually experience on their devices.
 
----
+Here is what I focus on every day:
 
-## 2. Installation and Build Commands
-
-```bash
-# 1. Install dependencies
-npm install
-
-# 2. Run local development server (starts at http://localhost:4321)
-npm run dev
-
-# 3. Type check and validate code
-npm run check
-
-# 4. Run automated test suite
-npm test
-
-# 5. Build production static site (outputs to ./dist)
-npm run build
-
-# 6. Preview the production build locally
-npm run preview
-```
+- **Scalable Architecture & Clean Code**: I design apps using Clean Architecture, MVVM, MVI, and BLoC patterns. I like keeping presentation, business logic, and data layers cleanly decoupled so teams can build, test, and refactor features without stepping on each other's toes.
+- **Progressive Modernization**: I've led large-scale migrations from legacy Java codebases to modern, idiomatic Kotlin and modern Jetpack libraries. I take pride in doing this safely and incrementally, with zero regressions and zero downtime for users.
+- **Relentless Performance & Stability**: A slow or crash-prone app hurts both users and business metrics. I actively profile apps for memory leaks, eliminate unnecessary widget rebuilds, optimize local caching, and write defensive code to drive crash rates down (such as reducing production crashes from 8.0% to 1.5% on TV Lens).
+- **Native & Cross-Platform Flexibility**: While I have deep native Android roots (Kotlin, Java, Coroutines, Flow, Jetpack Compose), I also build cross-platform apps with Flutter and write custom native platform channels whenever deeper hardware or OS access is needed. I've also built companion iOS apps using Swift when products required it.
 
 ---
 
-## 3. How to Edit the Portfolio Configuration
+## At a Glance
 
-All portfolio content is decoupled from presentation and stored in a single, strongly-typed source of truth:
-
-📁 `src/data/portfolio.ts`
-
-This file contains:
-- **`profile`**: Name, headline, short summary, extended bio, primary role, experience years, and core highlights.
-- **`contact`**: Email, LinkedIn URL, GitHub URL, and optional personal links.
-- **`resume`**: Availability flag, file download path, and download filename.
-- **`applications`**: Verified commercial projects, metadata, technologies, and Play Store links.
-- **`domainDescriptions`**: Overview text for each business domain.
-- **`experiences`**: Verified career history, achievements, and tech stacks.
-- **`education`**: Verified degrees, institutions, GPA, and locations.
-- **`skillCategories`**: Categorized technical competencies.
-
----
-
-## 4. How to Add a New Application and Business Domain
-
-To add an application, open `src/data/portfolio.ts` and append a new object to the `applications` array:
-
-```typescript
-{
-  id: 'my-new-app',
-  name: 'My New App',
-  domain: 'FinTech', // Any domain name
-  businessModel: 'B2C', // 'B2C' | 'B2B' | 'Enterprise' | 'Unspecified'
-  playStoreUrl: 'https://play.google.com/store/apps/details?id=com.example.app',
-  description: 'A concise summary of what this application does.',
-  highlights: [
-    'Engineered core transaction flows using Kotlin Coroutines and Jetpack Compose.',
-    'Optimized SQLite database queries reducing query latency by 40%.'
-  ],
-  technologies: ['Kotlin', 'Jetpack Compose', 'Room', 'Hilt'],
-  company: 'Company Name', // Optional
-  initials: 'MN', // 2-letter fallback badge monogram
-  domainCategory: 'quick-commerce' // Icon category: 'quick-commerce' | 'logistics' | 'healthcare' | 'entertainment' | 'social'
-}
-```
-
-### Automatic Domain Derivation
-You **do not need to modify any UI component or filter code**. 
-- The **Domain Expertise** section automatically detects `'FinTech'`, counts its applications, and creates a domain card.
-- The **Domain Filter** dropdown in the Applications section automatically adds `'FinTech'` to its list of selectable options.
-- If desired, you can add a custom description for the domain in `portfolioData.domainDescriptions` in `src/data/portfolio.ts`.
-
----
-
-## 5. How to Modify Skills and Professional Experience
-
-### Modifying Skills
-In `src/data/portfolio.ts`, locate `skillCategories`. You can edit existing categories or add new ones:
-
-```typescript
-skillCategories: [
-  {
-    title: 'Languages & Frameworks',
-    skills: ['Kotlin', 'Flutter', 'Dart', 'Java', 'Swift'],
-  },
-  {
-    title: 'Cloud & DevOps', // New category
-    skills: ['Docker', 'GitHub Actions', 'Fastlane'],
-  },
-  // ...
-]
-```
-
-### Modifying Experience Entries
-In `src/data/portfolio.ts`, locate `experiences`. Add or edit entries following this schema:
-
-```typescript
-{
-  company: 'Company Name',
-  client: 'Client Name (optional)',
-  role: 'Senior Software Engineer',
-  period: 'Jan 2026 – Present',
-  location: 'Bengaluru, India',
-  summary: 'Concise summary of team and scope.',
-  achievements: [
-    'Engineered feature X resulting in Y.',
-    'Modernized module Z to Kotlin.'
-  ],
-  technologies: ['Kotlin', 'Compose', 'Coroutines'],
-  associatedAppIds: ['app-id']
-}
-```
-
----
-
-## 6. How to Replace the Resume PDF
-
-The downloadable resume is served statically from the `public/` directory:
-
-1. Place your new resume PDF at:
-   `public/Piyush_Kumar_Gupta_Resume.pdf` (or `public/resume.pdf`).
-2. If your filename is different, update the filename in `src/data/portfolio.ts`:
-   ```typescript
-   resume: {
-     available: true,
-     downloadPath: '/My_Updated_Resume.pdf',
-     downloadFilename: 'Piyush_Kumar_Gupta_Resume.pdf',
-     label: 'Download Resume',
-   }
-   ```
-3. Run `npm run build`. The file will automatically be copied to `dist/` and served as a direct static download with clean filename attributes.
-
-> **Resilience note**: If `resume.available` is set to `false`, the website cleanly hides resume download actions without rendering broken links.
-
----
-
-## 7. How to Add or Replace Local Application Images
-
-By default, every project card displays a clean, minimal typography badge with its initials (e.g. `BB` for BigBasket, `VH` for Vahak).
-
-To use a custom image/icon for an application:
-1. Place the icon image in `public/images/apps/` (e.g. `public/images/apps/bigbasket.png`).
-2. In `src/data/portfolio.ts`, specify the `iconPath`:
-   ```typescript
-   {
-     id: 'bigbasket',
-     name: 'BigBasket',
-     iconPath: '/images/apps/bigbasket.png',
-     // ...
-   }
-   ```
-
----
-
-## 8. How to Update LinkedIn, GitHub, and Email Links
-
-In `src/data/portfolio.ts`, locate `contact`:
-
-```typescript
-contact: {
-  email: 'piyush.kr.work@gmail.com',
-  linkedin: 'https://www.linkedin.com/in/piyush-gupta-0a2354103/',
-  github: 'https://github.com/piyush-kr-gupta',
-  website: 'https://yourwebsite.com' // Optional
-}
-```
-
-- If you delete or leave a field `undefined` (for example, removing `website`), the site will automatically omit the corresponding button or link without broken layouts or empty tags.
-- The email action uses a clean `mailto:` link without requiring any backend services.
-
----
-
-## 9. How to Change Site Title, Description, Accent Color, and Theme Defaults
-
-### Site Title & SEO Description
-In `src/layouts/Layout.astro` and `src/data/portfolio.ts`, modify `profile.name`, `profile.headline`, or pass custom props to `<Layout title="..." description="...">`.
-
-### Accent Color
-The accent color uses Tailwind's `sky` palette (Sky 500 / 600 in light mode, Sky 400 in dark mode).
-To switch to an emerald, indigo, or violet accent:
-- Replace `sky-` class names across components with `emerald-`, `indigo-`, or your preferred Tailwind color.
-- Update `--accent` in `src/styles/global.css`.
-
-### Theme Defaults
-The theme system:
-1. Checks `localStorage.getItem('theme')`.
-2. Falls back to the visitor's system preference via `window.matchMedia('(prefers-color-scheme: dark)')`.
-3. To force dark mode by default, modify the inline script in `src/layouts/Layout.astro`.
-
----
-
-## 10. Version Management & Design Themes
-
-The codebase includes an integrated **Theme & Version Management System** so you can develop, preview, and test multiple styles without showing toggles or distractions to recruiters.
-
-### How It Works:
-- **Zero Distraction for Recruiters**: In production builds, the dev toolbar is **100% stripped** by Astro's compiler (`import.meta.env.DEV`). Public visitors only see the single finalized theme you designate.
-- **1-Line Theme Finalization**: Change the active live theme in `src/config/theme.ts`:
-  ```typescript
-  export const siteThemeConfig = {
-    activeTheme: 'bento', // Set to 'bento' (default), 'craft', 'minimal', 'modern', or 'parallax'
-  };
-  ```
-- **Preview Routes**:
-  - `/` (or `/preview/bento`): **Engineering Bento Showcase** — Asymmetric bento grid spotlighting BigBasket at scale, architecture benchmarks, and mobile craft.
-  - `/preview/craft`: **Linear Dark Craft** — Raycast/Linear aesthetic, razor-sharp 1px hairline borders, micro-glows, and interactive Cmd+K command palette.
-  - `/preview/minimal`: **Clean Minimalist** — Understated, high-contrast, editorial engineering portfolio.
-  - `/preview/modern`: **Modern Interactive** — Glassmorphic cards, subtle gradient accents, and segmented filter controls.
-  - `/preview/parallax`: **Parallax & Motion** — Spatial depth layers, 3D interactive card perspective tilt, and motion layers.
-- **Dev-Only Switcher Toolbar**: While running `npm run dev`, a floating preview toolbar appears at the bottom-right corner for 1-click previewing between designs.
-
----
-
-## 11. Deployment to GitHub Pages
-
-A ready-to-use GitHub Actions workflow is provided at:
-`.github/workflows/deploy.yml`
-
-### Steps to enable GitHub Pages:
-1. Push this repository to GitHub.
-2. In your GitHub repository, navigate to **Settings** &rarr; **Pages**.
-3. Under **Build and deployment**, select **Source: GitHub Actions**.
-4. Push a commit to `main` (or trigger the workflow manually in the **Actions** tab).
-
-### Project Pages Base Path (`username.github.io/repo-name/`)
-If deploying to a repository subpath rather than a custom domain or root domain:
-1. In your GitHub repository, go to **Settings** &rarr; **Secrets and variables** &rarr; **Actions** &rarr; **Variables**.
-2. Add a variable named `ASTRO_BASE_URL` with value `/<your-repo-name>/` (with leading and trailing slashes).
-3. The workflow and helper `getAssetUrl()` will automatically route assets and URLs through `/<your-repo-name>/`.
-
----
-
-## 12. Deployment to Vercel
-
-Vercel provides automatic detection and zero-config deployment for Astro.
-
-### Using the Vercel Dashboard:
-1. Push the code to GitHub/GitLab.
-2. Import the repository in the Vercel dashboard.
-3. Framework Preset: **Astro** (auto-detected).
-4. Build Command: `npm run build`
-5. Output Directory: `dist`
-6. Click **Deploy**.
-
-A `vercel.json` file is already included in the root with `cleanUrls: true` for clean static routing.
-
----
-
-## 13. Deployment to Cloudflare Pages
-
-Cloudflare Pages provides global CDN edge hosting with fast TTFB.
-
-### Using Cloudflare Pages Dashboard:
-1. Log in to Cloudflare Dashboard &rarr; **Workers & Pages** &rarr; **Create application** &rarr; **Pages** &rarr; **Connect to Git**.
-2. Select your repository.
-3. Build configuration:
-   - **Framework preset**: Astro
-   - **Build command**: `npm run build`
-   - **Build output directory**: `dist`
-   - **Root directory**: `/`
-   - **Environment Variables**: Add `NODE_VERSION: 22`
-4. Click **Save and Deploy**.
-
-A `public/_headers` file is already included in the project to automatically apply security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`) and long-term caching for immutable assets (`/_astro/*`).
-
----
-
-## 14. Custom-Domain Configuration and Base-Path Considerations
-
-When using a custom domain (e.g. `piyushgupta.dev`):
-- Ensure `ASTRO_BASE_URL` is set to `/` (the default).
-- In `astro.config.mjs`, you can set `site: 'https://yourdomain.com'`.
-- For GitHub Pages with a custom domain:
-  - Add your custom domain in **Repository Settings** &rarr; **Pages** &rarr; **Custom domain**.
-  - GitHub will automatically generate a `CNAME` record.
-
----
-
-## 15. Troubleshooting Common Deployment Issues
-
-| Issue | Cause | Solution |
+| Metric | What It Represents | Where I Built It |
 | :--- | :--- | :--- |
-| **404 on CSS/JS or Assets on GitHub Pages** | Base path mismatch on subpath repositories (e.g. `username.github.io/my-repo`) | Ensure `ASTRO_BASE_URL` is set to `/<repo-name>/` in your environment or repository variables. |
-| **Node.js version build error on CI/CD** | Outdated Node version in CI runner | Ensure Node.js is set to `20+` or `22` in your build environment. |
-| **Theme flashes wrong color on load (FOUC)** | Theme check executing after rendering | The inline script in `src/layouts/Layout.astro` executes synchronously in `<head>` before HTML rendering to eliminate any flash. |
-| **PDF download opens in browser instead of saving** | Browser default PDF behavior | The download links specify the HTML5 `download="Piyush_Kumar_Gupta_Resume.pdf"` attribute. |
-| **Play Store links not opening properly** | Blocked popups or referrer issues | All external Play Store links include `target="_blank" rel="noopener noreferrer"` for security and cross-origin compatibility. |
+| **120M+** | **Cumulative Google Play Downloads** | Across 8 commercial applications |
+| **25M+** | Registered users on the platform | BigBasket ecosystem |
+| **15M+** | Monthly orders processed smoothly | BigBasket quick commerce & scheduled deliveries |
+| **18M+** | Monthly active visitors | BigBasket shopping events & daily traffic |
+| **8.0% &rarr; 1.5%** | Production crash rate reduction | TV Lens / OTT Watch |
+| **9 Languages** | Vernacular Indian languages supported natively | MyMandir community app |
+| **8 Apps** | Production applications shipped to Google Play | Across Quick Commerce, Logistics, Healthcare & Media |
+| **6.5+ Years** | Hands-on engineering experience | Shipping commercial mobile software |
+
+### Google Play Downloads at a Glance
+
+| Application | Domain | Business Model | Google Play Downloads |
+| :--- | :--- | :--- | :--- |
+| **BigBasket: Groceries and more** | Quick Commerce | B2C | **100M+ Downloads** |
+| **OTT Watch (TV Lens)** | Entertainment & Streaming | Consumer App | **10M+ Downloads** |
+| **Vahak** | Transport Services | B2B Marketplace | **5M+ Downloads** |
+| **MyMandir** | Devotional Social Media | Vernacular Community | **5M+ Downloads** |
+| **BigBasket Delivery Partner App** | Quick Commerce | Fleet Operations & Logistics | **1M+ Downloads** |
+| **CrelioHealth For Patients** | Healthcare Diagnostics | B2C Patient Portal | **5L+ Downloads** |
+| **CrelioHealth For Doctors** | Healthcare Diagnostics | B2B Clinical App | **10K+ Downloads** |
+| **Creliohealth Inventory** | Healthcare & Lab Operations | B2B Enterprise Operations | **100+ Downloads** |
 
 ---
 
-## Security & Package Integrity
+## Apps I've Built & Scaled
 
-This project strictly adheres to minimal, verified, zero-untrusted dependency requirements:
-- Direct dependencies: `astro`, `tailwindcss`, `@tailwindcss/vite`.
-- Dev dependencies: `typescript`, `@astrojs/check`, `@types/node`.
-- Audit status: `0 vulnerabilities` via `npm audit`.
-- Client-side data: 100% static, local, zero cookies, zero third-party trackers.
+Here are the 8 commercial applications I've contributed to or built from the ground up, all available on Google Play:
+
+```
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                             COMMERCIAL APPLICATIONS MATRIX                             │
+├───────────────────────────────┬─────────────────────────┬──────────────┬───────────────┤
+│ Application                   │ Domain                  │ Downloads    │ Tech Stack    │
+├───────────────────────────────┼─────────────────────────┼──────────────┼───────────────┤
+│ BigBasket: Groceries and more │ Quick Commerce (B2C)    │ 100M+        │ Flutter/BLoC  │
+│ OTT Watch                     │ Entertainment & Media   │ 10M+         │ Kotlin/MVVM   │
+│ Vahak                         │ Transport Services (B2B)│ 5M+          │ Flutter/BLoC  │
+│ MyMandir                      │ Devotional Social Media │ 5M+          │ Java/Kotlin   │
+│ BB Delivery Partner App       │ Quick Commerce (Fleet)  │ 1M+          │ Kotlin/Java   │
+│ CrelioHealth For Patients     │ Healthcare Diagnostics  │ 5L+          │ Kotlin/Hilt   │
+│ CrelioHealth For Doctors      │ Healthcare Diagnostics  │ 10K+         │ Kotlin/MVVM   │
+│ Creliohealth Inventory        │ Healthcare & Lab Ops    │ 100+         │ Kotlin/Swift  │
+└───────────────────────────────┴─────────────────────────┴──────────────┴───────────────┘
+```
+
+### 1. BigBasket: Groceries and more
+- **Domain**: Quick Commerce & Daily Groceries | **Model**: B2C
+- **Company / Client**: Recrosoft Technologies (Client: BigBasket)
+- **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=com.bigbasket.mobileapp&hl=en_IN)
+- **Downloads**: **100M+ Downloads**
+- **Scale**: 25M+ registered users, 15M+ monthly orders, 18M+ monthly visitors across India.
+- **Tech Stack**: Flutter, Dart, BLoC, Lottie, Rive, REST APIs, Backend-Driven UI
+- **My Contributions**:
+  - I helped migrate and consolidate BBdaily into the main BigBasket application, bringing scheduled subscriptions into rapid 10–20 minute quick-commerce delivery journeys.
+  - Built reusable Flutter widgets, design system components, and complex checkout flows following clean architecture principles.
+  - Implemented state management with BLoC, integrated backend-driven UI components, and managed asynchronous data pipelines.
+  - Optimized widget trees to eliminate unnecessary rebuilds and integrated fluid Lottie and Rive animations for a smooth 60fps shopping experience.
+
+---
+
+### 2. BigBasket Delivery Partner App
+- **Domain**: Quick Commerce & Fleet Operations | **Model**: Logistics & Delivery
+- **Company / Client**: Recrosoft Technologies (Client: BigBasket)
+- **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=com.bigbasket.dapp.activity&hl=en_IN)
+- **Downloads**: **1M+ Downloads**
+- **Scale**: Mission-critical daily logistics tool used by thousands of delivery partners across India for route fulfillment, dispatching, and tracking.
+- **Tech Stack**: Kotlin, Java, Android Jetpack, Coroutines, Kotlin Flow, ViewModel, Room, WorkManager
+- **My Contributions**:
+  - Spearheaded a progressive migration of the codebase from legacy Java to modern Kotlin, ensuring complete backward compatibility and zero disruption to daily delivery operations.
+  - Maintained and stabilized legacy Java modules while resolving tough edge-case bugs under real-world logistics conditions.
+  - Modernized the data layer with Android Jetpack components (Coroutines, Kotlin Flow, ViewModel, Room, and WorkManager) to ensure reliable offline-first sync and fast background processing.
+
+---
+
+### 3. Vahak
+- **Domain**: Transport Services & Logistics | **Model**: B2B Marketplace
+- **Company**: Epictus Solutions India Pvt. Ltd - Vahak
+- **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=search.find.lorries.invite.transporter.add.lorries.deliveries.codenicely.search.vahak&hl=en_IN)
+- **Downloads**: **5M+ Downloads**
+- **Scope**: India's largest road transport marketplace connecting lorry owners, fleet operators, and logistics brokers for load bookings.
+- **Tech Stack**: Flutter, Dart, Kotlin, BLoC, MVVM, Method Channels, REST APIs
+- **My Contributions**:
+  - Worked within the core mobile team using BLoC state management and MVVM architecture to release fast, responsive load discovery and booking features.
+  - Authored custom Flutter packages and native Android plugins in Kotlin to tap directly into device-level APIs.
+  - Boosted overall app responsiveness and reduced memory overhead through lazy loading and widget tree restructuring.
+  - Actively conducted code reviews, mentored team members, and advocated for strict clean-code guidelines and unit testing.
+
+---
+
+### 4. CrelioHealth For Patients
+- **Domain**: Healthcare Diagnostics | **Model**: B2C
+- **Company**: Creliant Software Pvt. Ltd.
+- **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=com.livehealth&hl=en_IN)
+- **Downloads**: **5L+ Downloads**
+- **Scope**: A patient health portal used to view certified diagnostic lab reports, track medical vitals over time, and book doctor appointments.
+- **Tech Stack**: Kotlin, Android SDK, Hilt, Coroutines, Room, Retrofit, Firebase Crashlytics, Performance Monitoring
+- **My Contributions**:
+  - Built core app features using Hilt for dependency injection, Kotlin Coroutines for async work, Room for offline medical records caching, and Retrofit for network calls.
+  - Integrated Firebase Crashlytics and Firebase Performance Monitoring to spot bottlenecks early and keep crash-free sessions high.
+  - Migrated legacy Java modules over to clean Kotlin code, eliminating boilerplate and making future maintenance much faster.
+
+---
+
+### 5. CrelioHealth For Doctors
+- **Domain**: Healthcare Diagnostics | **Model**: B2B
+- **Company**: Creliant Software Pvt. Ltd.
+- **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=com.livehealthdoctorapp&hl=en_IN)
+- **Downloads**: **10K+ Downloads**
+- **Scope**: Clinical communication tool that enables pathologists, lab directors, and doctors to review, interpret, and digitally sign diagnostic test results.
+- **Tech Stack**: Kotlin, Android SDK, Hilt, Coroutines, Room, Retrofit, MVVM
+- **My Contributions**:
+  - Built secure, efficient report verification workflows using Hilt, Coroutines, Room, and Retrofit.
+  - Rewrote Java modules in Kotlin using clean MVVM architecture, ensuring presentation and sensitive clinical data remained strictly decoupled.
+  - Kept crash-free user rates consistently high across varied hospital and clinic hardware setups.
+
+---
+
+### 6. Creliohealth Inventory
+- **Domain**: Healthcare & Laboratory Operations | **Model**: B2B
+- **Company**: Creliant Software Pvt. Ltd.
+- **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=com.creliohealth.inventorymanagement&hl=en_IN)
+- **Downloads**: **100+ Downloads**
+- **Scope**: A specialized inventory management app for pathology labs to track chemical reagents, monitor expiration dates, and handle purchase orders.
+- **Tech Stack**: Kotlin, Android SDK, Swift (iOS), Clean Architecture, Room, Retrofit
+- **My Contributions**:
+  - Built the Android application from the ground up using Kotlin, implementing clean architecture and an offline-first Room database for barcode scanning in low-connectivity lab environments.
+  - Built the companion iOS app from scratch using Swift to give clinic managers a unified experience on iOS devices.
+  - Designed robust local validation logic for high-speed barcode scanning of reagents and consumables.
+
+---
+
+### 7. OTT Watch (TV Lens)
+- **Domain**: Entertainment & Streaming Media | **Model**: Consumer App
+- **Company**: Appyhigh Technology LLP
+- **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=movies.old.watched.free)
+- **Downloads**: **10M+ Downloads**
+- **Scope**: Movie and television show guide that aggregates streaming availability and recommendations across major OTT platforms.
+- **Tech Stack**: Kotlin, Java, MVVM, Dagger-Hilt, Room, Retrofit, Glide, Picasso
+- **My Contributions**:
+  - Took complete, end-to-end ownership of the app lifecycle—from feature development and automated testing to Play Store release management.
+  - **Cut the production crash rate from 8.0% down to 1.5%** by fixing memory leaks, adding defensive error boundaries, and throttling heavy background network tasks.
+  - Structured the project around clean MVVM with Dagger-Hilt, Room, and Retrofit, and tuned image caching with Glide and Picasso for fluid media catalog scrolling.
+
+---
+
+### 8. MyMandir
+- **Domain**: Devotional Social Media | **Model**: Vernacular Community
+- **Company**: Bakbak Technologies Pvt Ltd
+- **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=com.mymandir&hl=en_IN)
+- **Downloads**: **5M+ Downloads**
+- **Scope**: India's largest vernacular social platform for the devotional community, connecting millions of users through cultural content and community discussions.
+- **Tech Stack**: Java, Kotlin, Android SDK, MVP, MVVM, AdMob Mediation, Localization
+- **My Contributions**:
+  - Engineered localized mobile interfaces with first-class native font and layout support across **9 Indian regional languages**.
+  - Wrote modular, maintainable code following MVP and MVVM architecture with reusable UI components.
+  - Set up monetization waterfalls with Google AdMob and Facebook Audience Network mediation cascades to maximize ad fill rates without hurting scrolling performance.
+
+---
+
+## Domains I've Worked In
+
+Over the past 6.5+ years, I've had the chance to solve hard engineering problems across several distinct industries:
+
+1. **Quick Commerce**: Building high-scale consumer apps and partner tools where 10–20 minute delivery windows require dependable real-time tracking, offline synchronization, and resilient checkout flows.
+2. **Transport & Logistics**: Developing B2B marketplace platforms where lorry drivers, fleet owners, and brokers need lightning-fast search, dynamic bidding, and reliable background communication.
+3. **Healthcare Diagnostics**: Crafting clinical apps and lab inventory systems where data accuracy, patient privacy, and offline reliability are non-negotiable.
+4. **Entertainment & Streaming**: Designing media catalogs and recommendation feeds optimized for memory efficiency, smooth image loading, and minimal battery consumption.
+5. **Vernacular Social Media**: Creating high-engagement social feeds with full support for regional typography across 9 Indian languages and seamless ad mediation.
+
+---
+
+## My Career Journey
+
+### Senior Software Engineer (Flutter, Kotlin)
+**Recrosoft Technologies** | *Client: BigBasket*  
+*May 2025 – June 2026 | Bengaluru, India*  
+- Worked on the consolidation of BBdaily into the unified BigBasket shopping app, supporting an ecosystem with 25M+ registered users and 15M+ monthly orders.
+- Developed reusable Flutter components, state management pipelines, and backend-driven UI screens for quick-commerce and subscription flows.
+- Modernized the BigBasket Delivery Partner App by progressively migrating legacy Java modules to modern Kotlin, Coroutines, Flow, and Room without disrupting daily fulfillment.
+- Integrated Lottie and Rive animations and optimized widget trees to maintain a smooth 60fps user experience.
+
+---
+
+### Mobile Developer SDE-2 (Flutter, Kotlin)
+**Epictus Solutions India Pvt. Ltd** | *Product: Vahak*  
+*Nov 2023 – Jan 2025 | Bengaluru, India*  
+- Developed key features for India's largest road transport logistics marketplace using Flutter, Kotlin, and BLoC.
+- Built custom Flutter packages and native Android plugins to interface directly with hardware and system capabilities.
+- Tuned app performance through lazy loading and widget tree optimization, reducing load times and device memory usage.
+- Mentored teammates, reviewed pull requests, and helped maintain high code quality standards across the mobile team.
+
+---
+
+### Mobile Developer (Kotlin, Java, Swift)
+**Creliant Software Pvt. Ltd.**  
+*Jul 2021 – Nov 2023 | Pune, India*  
+- Developed the CrelioHealth Inventory app for Android from scratch using Kotlin and built its companion iOS app using Swift.
+- Architected data and networking layers for CrelioHealth for Patients and CrelioHealth for Doctors using Hilt, Coroutines, Room, and Retrofit.
+- Integrated Firebase Crashlytics and Performance Monitoring to catch issues early and safeguard clinical workflows.
+- Migrated older Java components to Kotlin to improve code readability and maintainability.
+
+---
+
+### Android Developer (Kotlin, Java)
+**Appyhigh Technology LLP**  
+*Jul 2020 – Mar 2021 | Hyderabad, India*  
+- Owned the entire lifecycle of TV Lens (OTT Watch)—handling feature development, QA, and Play Store releases.
+- Slashed production crash rates from 8.0% to 1.5% through defensive error handling, memory leak fixes, and performance profiling.
+- Structured the app around MVVM with Dagger-Hilt, Room, and Retrofit, and tuned image caching with Glide and Picasso.
+
+---
+
+### Android Developer (Java, Kotlin)
+**Bakbak Technologies Pvt Ltd**  
+*Apr 2019 – Jun 2020 | Bengaluru, India*  
+- Built vernacular social media features for MyMandir supporting 9 Indian regional languages.
+- Implemented clean MVP and MVVM architectures with high code modularity and unit test coverage.
+- Integrated ad monetization cascades using Google AdMob and Facebook Audience Network mediation.
+- Contributed to Eka, a habit-building wellness and meditation app.
+
+---
+
+## Technologies & Tools I Use
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                            SKILLS TAXONOMY                                  │
+├──────────────────────────┬──────────────────────────────────────────────────┤
+│ Category                 │ Technologies & Practices                         │
+├──────────────────────────┼──────────────────────────────────────────────────┤
+│ Languages & Frameworks   │ Kotlin, Flutter, Dart, Java, Swift               │
+│ Android Development      │ Android SDK, Jetpack Compose, Coroutines, Flow,  │
+│                          │ Room, WorkManager, ViewModel, Jetpack            │
+│ Architecture & Patterns  │ Clean Architecture, MVVM, BLoC, MVI,             │
+│                          │ Modularization, System Design, Profiling         │
+│ Infrastructure & Tools   │ REST APIs, Firebase, Firestore, Crashlytics,     │
+│                          │ Hilt, Dagger, CI/CD, Git, Retrofit               │
+│ Testing & Reliability    │ Unit Testing, Defective Crash Analysis, Profiling│
+└──────────────────────────┴──────────────────────────────────────────────────┘
+```
+
+- **Languages & Frameworks**: Kotlin, Flutter, Dart, Java, Swift
+- **Android Development**: Android SDK, Jetpack Compose, Coroutines, Flow, Room, WorkManager, ViewModel, Jetpack components
+- **Architecture & Design**: Clean Architecture, MVVM, BLoC, MVI, Modularization, System Design, Memory Profiling
+- **Infrastructure & Integrations**: REST APIs, Firebase (Firestore, Crashlytics, Performance Monitoring), Hilt, Dagger, Retrofit, Git, CI/CD
+- **Testing & Quality**: Unit testing, defensive programming, memory leak profiling, production crash reduction
+
+---
+
+## Education & Background
+
+- **Bachelor of Technology (B. Tech) in Electronics & Communication Engineering (ECE)**  
+  MCKV Institute of Engineering, Kolkata, India  
+  *2014 – 2018 | 8.07 DGPA*
+
+---
+
+## Get in Touch
+
+I'm always excited to discuss mobile architecture, interesting engineering challenges, or new opportunities:
+
+- ✉️ **Email**: [piyush.kr.work@gmail.com](mailto:piyush.kr.work@gmail.com)
+- 💼 **LinkedIn**: [linkedin.com/in/piyush-gupta-0a2354103](https://www.linkedin.com/in/piyush-gupta-0a2354103/)
+- 💻 **GitHub**: [github.com/piyush-kr-gupta](https://github.com/piyush-kr-gupta)
+- 📄 **Resume**: [Download My Resume PDF](file:///Users/piyushkr/AI_Web_Projects/piyush_kr_portfolio/public/Piyush_Kumar_Gupta_Resume.pdf)

@@ -200,6 +200,11 @@ const uniqueDomains = getUniqueDomains(applications);
                     {app.businessModel}
                   </span>
                 )}
+                {app.downloads && (
+                  <span class="inline-flex items-center rounded border border-emerald-900/80 bg-emerald-950/60 px-2 py-0.5 text-[10px] font-semibold text-emerald-300">
+                    {app.downloads}
+                  </span>
+                )}
               </div>
             </div>
 
