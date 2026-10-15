@@ -1,6 +1,7 @@
 ---
 import { portfolioData, getUniqueDomains } from '../data/portfolio';
 import { getAssetUrl } from '../utils/url';
+import ProductionAppsRibbon from './ProductionAppsRibbon.astro';
 
 const { applications } = portfolioData;
 const uniqueDomains = getUniqueDomains(applications);
@@ -8,6 +9,10 @@ const uniqueDomains = getUniqueDomains(applications);
 
 <section id="work" class="py-16 md:py-24 border-b border-zinc-200/80 dark:border-zinc-800/80 scroll-mt-16">
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- Production Apps Ribbon -->
+    <ProductionAppsRibbon />
+
     <!-- Section Header -->
     <div class="max-w-2xl mb-10">
       <h2 class="text-xs font-semibold uppercase tracking-wider text-sky-600 dark:text-sky-400 mb-2">

@@ -1,0 +1,54 @@
+---
+import { portfolioData } from '../data/portfolio';
+import { getAssetUrl } from '../utils/url';
+
+const { applications } = portfolioData;
+
+const shortNames: Record<string, string> = {
+  'bigbasket': 'BigBasket',
+  'bigbasket-delivery-partner': 'BB Delivery',
+  'vahak': 'Vahak',
+  'creliohealth-patients': 'CrelioHealth Patients',
+  'creliohealth-doctors': 'CrelioHealth Doctors',
+  'creliohealth-inventory': 'Crelio Inventory',
+  'tv-lens': 'OTT Watch',
+  'mymandir': 'MyMandir',
+};
+---
+
+<div class="mb-14 py-4 px-5 sm:px-8 rounded-3xl bg-white/70 dark:bg-slate-900/40 border border-zinc-200/80 dark:border-slate-800/80 backdrop-blur-md max-w-4xl mx-auto shadow-xs">
+  <div class="text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-slate-400 mb-3 text-center flex items-center justify-center gap-3">
+    <span class="w-8 h-px bg-zinc-200 dark:bg-slate-800"></span>
+    <span>Production Apps Engineered &amp; Scaled</span>
+    <span class="w-8 h-px bg-zinc-200 dark:bg-slate-800"></span>
+  </div>
+  <div class="flex items-center justify-center gap-3 sm:gap-6 flex-wrap">
+    {applications.map((app) => {
+      const displayName = shortNames[app.id] || app.name;
+      return (
+        <a
+          href={`#${app.id}`}
+          class="flex items-center gap-2 group cursor-pointer transition-transform"
+          title={`${displayName} (${app.downloads || 'Production'})`}
+        >
+          <img
+            alt={displayName}
+            class="w-10 h-10 rounded-2xl object-cover shadow-xs border border-zinc-200 dark:border-slate-700/80 bg-zinc-100 dark:bg-slate-950 group-hover:scale-110 group-hover:border-sky-500 dark:group-hover:border-sky-400 transition-all shrink-0"
+            loading="lazy"
+            width="40"
+            height="40"
+            src={getAssetUrl(app.iconPath || '')}
+          />
+          <div class="hidden lg:block text-left">
+            <div class="text-xs font-bold text-zinc-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors leading-tight">
+              {displayName}
+            </div>
+            <div class="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">
+              {app.downloads}
+            </div>
+          </div>
+        </a>
+      );
+    })}
+  </div>
+</div>
