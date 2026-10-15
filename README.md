@@ -2,11 +2,11 @@
 
 ### Senior Android & Flutter Engineer
 
-I'm a Senior Mobile Engineer with **6.5+ years of experience** designing, building, and scaling high-performance Android and cross-platform Flutter applications. Over the years, I've had the opportunity to build and scale mobile products with over **120M+ cumulative Google Play downloads**—from high-throughput quick-commerce workflows at BigBasket to B2B logistics networks at Vahak, mission-critical healthcare apps at CrelioHealth, and vernacular social platforms at MyMandir.
+I'm a Senior Mobile Engineer with **6.5+ years of experience** designing, building, and scaling high-performance Android and cross-platform Flutter applications. Over the years, I've had the opportunity to build and scale mobile products with over **120M+ cumulative Google Play installs**—from high-throughput quick-commerce workflows at BigBasket to B2B logistics networks at Vahak, mission-critical healthcare apps at CrelioHealth, and vernacular social platforms at MyMandir.
 
 [![Location](https://img.shields.io/badge/Location-Bengaluru%2C%20India-blue)](#get-in-touch)
 [![Experience](https://img.shields.io/badge/Experience-6.5%2B%20Years-emerald)](#at-a-glance)
-[![Google Play Downloads](https://img.shields.io/badge/Google%20Play-120M%2B%20Downloads-success)](#google-play-downloads-at-a-glance)
+[![Google Play Installs](https://img.shields.io/badge/Google%20Play-120M%2B%20Installs-success)](#google-play-installs-at-a-glance)
 [![Primary Stack](https://img.shields.io/badge/Stack-Kotlin%20%7C%20Flutter%20%7C%20Android%20SDK-purple)](#technologies--tools-i-use)
 [![Commercial Apps](https://img.shields.io/badge/Apps-8%20Production%20Apps-orange)](#apps-ive-built--scaled)
 
@@ -29,7 +29,7 @@ Here is what I focus on every day:
 
 | Metric | What It Represents | Where I Built It |
 | :--- | :--- | :--- |
-| **120M+** | **Cumulative Google Play Downloads** | Across 8 commercial applications |
+| **120M+** | **Cumulative Google Play Installs** | Across 8 commercial applications |
 | **25M+** | Registered users on the platform | BigBasket ecosystem |
 | **15M+** | Monthly orders processed smoothly | BigBasket quick commerce & scheduled deliveries |
 | **18M+** | Monthly active visitors | BigBasket shopping events & daily traffic |
@@ -38,18 +38,18 @@ Here is what I focus on every day:
 | **8 Apps** | Production applications shipped to Google Play | Across Quick Commerce, Logistics, Healthcare & Media |
 | **6.5+ Years** | Hands-on engineering experience | Shipping commercial mobile software |
 
-### Google Play Downloads at a Glance
+### Google Play Installs at a Glance
 
-| Application | Domain | Business Model | Google Play Downloads |
+| Application | Domain | Business Model | Google Play Installs |
 | :--- | :--- | :--- | :--- |
-| **BigBasket: Groceries and more** | Quick Commerce | B2C | **100M+ Downloads** |
-| **OTT Watch (TV Lens)** | Entertainment & Streaming | Consumer App | **10M+ Downloads** |
-| **Vahak** | Transport Services | B2B Marketplace | **5M+ Downloads** |
-| **MyMandir** | Devotional Social Media | Vernacular Community | **5M+ Downloads** |
-| **BigBasket Delivery Partner App** | Quick Commerce | Fleet Operations & Logistics | **1M+ Downloads** |
-| **CrelioHealth For Patients** | Healthcare Diagnostics | B2C Patient Portal | **5L+ Downloads** |
-| **CrelioHealth For Doctors** | Healthcare Diagnostics | B2B Clinical App | **10K+ Downloads** |
-| **Creliohealth Inventory** | Healthcare & Lab Operations | B2B Enterprise Operations | **100+ Downloads** |
+| **BigBasket: Groceries and more** | Quick Commerce | B2C | **100M+ Installs** |
+| **OTT Watch (TV Lens)** | Entertainment & Streaming | Consumer App | **10M+ Installs** |
+| **Vahak** | Transport Services | B2B Marketplace | **5M+ Installs** |
+| **MyMandir** | Devotional Social Media | Vernacular Community | **5M+ Installs** |
+| **BigBasket Delivery Partner App** | Quick Commerce | Fleet Operations & Logistics | **1M+ Installs** |
+| **CrelioHealth For Patients** | Healthcare Diagnostics | B2C Patient Portal | **5L+ Installs** |
+| **CrelioHealth For Doctors** | Healthcare Diagnostics | B2B Clinical App | **10K+ Installs** |
+| **Creliohealth Inventory** | Healthcare & Lab Operations | B2B Enterprise Operations | **100+ Installs** |
 
 ---
 
@@ -61,7 +61,7 @@ Here are the 8 commercial applications I've contributed to or built from the gro
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
 │                             COMMERCIAL APPLICATIONS MATRIX                             │
 ├───────────────────────────────┬─────────────────────────┬──────────────┬───────────────┤
-│ Application                   │ Domain                  │ Downloads    │ Tech Stack    │
+│ Application                   │ Domain                  │ Installs    │ Tech Stack    │
 ├───────────────────────────────┼─────────────────────────┼──────────────┼───────────────┤
 │ BigBasket: Groceries and more │ Quick Commerce (B2C)    │ 100M+        │ Flutter/BLoC  │
 │ OTT Watch                     │ Entertainment & Media   │ 10M+         │ Kotlin/MVVM   │
@@ -78,7 +78,7 @@ Here are the 8 commercial applications I've contributed to or built from the gro
 - **Domain**: Quick Commerce & Daily Groceries | **Model**: B2C
 - **Company / Client**: Recrosoft Technologies (Client: BigBasket)
 - **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=com.bigbasket.mobileapp&hl=en_IN)
-- **Downloads**: **100M+ Downloads**
+- **Installs**: **100M+ Installs**
 - **Scale**: 25M+ registered users, 15M+ monthly orders, 18M+ monthly visitors across India.
 - **Tech Stack**: Flutter, Dart, BLoC, Lottie, Rive, REST APIs, Backend-Driven UI
 - **My Contributions**:
@@ -93,7 +93,7 @@ Here are the 8 commercial applications I've contributed to or built from the gro
 - **Domain**: Quick Commerce & Fleet Operations | **Model**: Logistics & Delivery
 - **Company / Client**: Recrosoft Technologies (Client: BigBasket)
 - **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=com.bigbasket.dapp.activity&hl=en_IN)
-- **Downloads**: **1M+ Downloads**
+- **Installs**: **1M+ Installs**
 - **Scale**: Mission-critical daily logistics tool used by thousands of delivery partners across India for route fulfillment, dispatching, and tracking.
 - **Tech Stack**: Kotlin, Java, Android Jetpack, Coroutines, Kotlin Flow, ViewModel, Room, WorkManager
 - **My Contributions**:
@@ -107,7 +107,7 @@ Here are the 8 commercial applications I've contributed to or built from the gro
 - **Domain**: Transport Services & Logistics | **Model**: B2B Marketplace
 - **Company**: Epictus Solutions India Pvt. Ltd - Vahak
 - **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=search.find.lorries.invite.transporter.add.lorries.deliveries.codenicely.search.vahak&hl=en_IN)
-- **Downloads**: **5M+ Downloads**
+- **Installs**: **5M+ Installs**
 - **Scope**: India's largest road transport marketplace connecting lorry owners, fleet operators, and logistics brokers for load bookings.
 - **Tech Stack**: Flutter, Dart, Kotlin, BLoC, MVVM, Method Channels, REST APIs
 - **My Contributions**:
@@ -122,7 +122,7 @@ Here are the 8 commercial applications I've contributed to or built from the gro
 - **Domain**: Healthcare Diagnostics | **Model**: B2C
 - **Company**: Creliant Software Pvt. Ltd.
 - **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=com.livehealth&hl=en_IN)
-- **Downloads**: **5L+ Downloads**
+- **Installs**: **5L+ Installs**
 - **Scope**: A patient health portal used to view certified diagnostic lab reports, track medical vitals over time, and book doctor appointments.
 - **Tech Stack**: Kotlin, Android SDK, Hilt, Coroutines, Room, Retrofit, Firebase Crashlytics, Performance Monitoring
 - **My Contributions**:
@@ -136,7 +136,7 @@ Here are the 8 commercial applications I've contributed to or built from the gro
 - **Domain**: Healthcare Diagnostics | **Model**: B2B
 - **Company**: Creliant Software Pvt. Ltd.
 - **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=com.livehealthdoctorapp&hl=en_IN)
-- **Downloads**: **10K+ Downloads**
+- **Installs**: **10K+ Installs**
 - **Scope**: Clinical communication tool that enables pathologists, lab directors, and doctors to review, interpret, and digitally sign diagnostic test results.
 - **Tech Stack**: Kotlin, Android SDK, Hilt, Coroutines, Room, Retrofit, MVVM
 - **My Contributions**:
@@ -150,7 +150,7 @@ Here are the 8 commercial applications I've contributed to or built from the gro
 - **Domain**: Healthcare & Laboratory Operations | **Model**: B2B
 - **Company**: Creliant Software Pvt. Ltd.
 - **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=com.creliohealth.inventorymanagement&hl=en_IN)
-- **Downloads**: **100+ Downloads**
+- **Installs**: **100+ Installs**
 - **Scope**: A specialized inventory management app for pathology labs to track chemical reagents, monitor expiration dates, and handle purchase orders.
 - **Tech Stack**: Kotlin, Android SDK, Swift (iOS), Clean Architecture, Room, Retrofit
 - **My Contributions**:
@@ -164,7 +164,7 @@ Here are the 8 commercial applications I've contributed to or built from the gro
 - **Domain**: Entertainment & Streaming Media | **Model**: Consumer App
 - **Company**: Appyhigh Technology LLP
 - **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=movies.old.watched.free)
-- **Downloads**: **10M+ Downloads**
+- **Installs**: **10M+ Installs**
 - **Scope**: Movie and television show guide that aggregates streaming availability and recommendations across major OTT platforms.
 - **Tech Stack**: Kotlin, Java, MVVM, Dagger-Hilt, Room, Retrofit, Glide, Picasso
 - **My Contributions**:
@@ -178,7 +178,7 @@ Here are the 8 commercial applications I've contributed to or built from the gro
 - **Domain**: Devotional Social Media | **Model**: Vernacular Community
 - **Company**: Bakbak Technologies Pvt Ltd
 - **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=com.mymandir&hl=en_IN)
-- **Downloads**: **5M+ Downloads**
+- **Installs**: **5M+ Installs**
 - **Scope**: India's largest vernacular social platform for the devotional community, connecting millions of users through cultural content and community discussions.
 - **Tech Stack**: Java, Kotlin, Android SDK, MVP, MVVM, AdMob Mediation, Localization
 - **My Contributions**:

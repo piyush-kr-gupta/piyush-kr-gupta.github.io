@@ -153,16 +153,16 @@ const uniqueDomains = getUniqueDomains(applications);
 
               <!-- Domain & Business Model Badges -->
               <div class="flex flex-col items-end gap-1.5 shrink-0">
-                <span class="inline-flex items-center rounded-md bg-zinc-100 dark:bg-zinc-800/90 border border-zinc-200 dark:border-zinc-700 px-2 py-0.5 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+                <span class="inline-flex items-center rounded-md bg-zinc-100 dark:bg-zinc-800/90 border border-zinc-200 dark:border-zinc-700 px-2 py-0.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 whitespace-nowrap shrink-0">
                   {app.domain}
                 </span>
                 {app.businessModel !== 'Unspecified' && (
-                  <span class="inline-flex items-center rounded-md bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800/60 px-2 py-0.5 text-[11px] font-semibold text-sky-700 dark:text-sky-300">
+                  <span class="inline-flex items-center rounded-md bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800/60 px-2 py-0.5 text-[11px] font-semibold text-sky-700 dark:text-sky-300 whitespace-nowrap shrink-0">
                     {app.businessModel}
                   </span>
                 )}
                 {app.downloads && (
-                  <span class="inline-flex items-center rounded-md bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 px-2 py-0.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-300">
+                  <span class="inline-flex items-center rounded-md bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 px-2 py-0.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-300 whitespace-nowrap shrink-0">
                     {app.downloads}
                   </span>
                 )}
