@@ -184,7 +184,12 @@ test('Domain Derivation Logic: Computes domain stats dynamically from applicatio
 });
 
 test('Multi-Version System: All preview routes compile and maintain complete data integrity', async () => {
-  const routes = ['preview/minimal/index.html', 'preview/modern/index.html', 'preview/parallax/index.html'];
+  const routes = [
+    'preview/bento/index.html',
+    'preview/minimal/index.html',
+    'preview/modern/index.html',
+    'preview/parallax/index.html',
+  ];
 
   for (const route of routes) {
     const filePath = path.resolve('dist', route);
@@ -217,8 +222,9 @@ test('Production Cleanliness: DevVersionToolbar is 100% stripped from production
 
 test('Theme Configuration: siteThemeConfig has valid activeTheme and theme list', async () => {
   const { siteThemeConfig } = await import('../src/config/theme.ts');
-  assert.ok(['minimal', 'modern', 'parallax'].includes(siteThemeConfig.activeTheme));
-  assert.strictEqual(siteThemeConfig.availableThemes.length, 3);
+  assert.ok(['minimal', 'modern', 'parallax', 'bento'].includes(siteThemeConfig.activeTheme));
+  assert.strictEqual(siteThemeConfig.availableThemes.length, 4);
+  assert.strictEqual(siteThemeConfig.activeTheme, 'bento');
 });
 
 

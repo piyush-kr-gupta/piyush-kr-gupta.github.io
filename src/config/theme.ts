@@ -10,7 +10,7 @@
  * - 'parallax': Spatial depth, 3D interactive card tilt, and motion layers.
  */
 
-export type ThemeVariant = 'minimal' | 'modern' | 'parallax';
+export type ThemeVariant = 'minimal' | 'modern' | 'parallax' | 'bento';
 
 export interface ThemeConfig {
   activeTheme: ThemeVariant;
@@ -23,10 +23,16 @@ export interface ThemeConfig {
 }
 
 export const siteThemeConfig: ThemeConfig = {
-  // Set your public active theme here:
-  activeTheme: 'minimal',
+  // Set your public active theme here ('minimal' | 'modern' | 'parallax' | 'bento'):
+  activeTheme: 'bento',
 
   availableThemes: [
+    {
+      id: 'bento',
+      name: 'Engineering Bento',
+      description: 'Asymmetric bento grid spotlighting flagship scale, architecture metrics, and mobile craft.',
+      previewPath: '/preview/bento',
+    },
     {
       id: 'minimal',
       name: 'Clean Minimalist',

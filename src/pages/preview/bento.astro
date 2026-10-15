@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BentoTheme from '../../components/themes/bento/BentoTheme.astro';
+import { portfolioData } from '../../data/portfolio';
+
+const { profile } = portfolioData;
+---
+
+<Layout
+  title={`${profile.name} | ${profile.headline} (Engineering Bento Showcase)`}
+  description={profile.shortSummary}
+  currentVariant="bento"
+>
+  <BentoTheme />
+</Layout>

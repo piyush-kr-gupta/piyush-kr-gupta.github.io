@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import BentoTheme from '../components/themes/bento/BentoTheme.astro';
 import MinimalTheme from '../components/themes/minimal/MinimalTheme.astro';
 import ModernTheme from '../components/themes/modern/ModernTheme.astro';
 import ParallaxTheme from '../components/themes/parallax/ParallaxTheme.astro';
@@ -15,7 +16,9 @@ const activeTheme = siteThemeConfig.activeTheme;
   description={profile.shortSummary}
   currentVariant={activeTheme}
 >
-  {activeTheme === 'modern' ? (
+  {activeTheme === 'bento' ? (
+    <BentoTheme />
+  ) : activeTheme === 'modern' ? (
     <ModernTheme />
   ) : activeTheme === 'parallax' ? (
     <ParallaxTheme />

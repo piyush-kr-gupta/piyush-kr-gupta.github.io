@@ -226,20 +226,21 @@ The theme system:
 
 ## 10. Version Management & Design Themes
 
-The codebase includes an integrated **Theme & Version Management System** so you can develop, preview, and test multiple styles (Minimalist, Modern, and Parallax) without showing toggles or distractions to recruiters.
+The codebase includes an integrated **Theme & Version Management System** so you can develop, preview, and test multiple styles (Engineering Bento, Minimalist, Modern, and Parallax) without showing toggles or distractions to recruiters.
 
 ### How It Works:
 - **Zero Distraction for Recruiters**: In production builds, the dev toolbar is **100% stripped** by Astro's compiler (`import.meta.env.DEV`). Public visitors only see the single finalized theme you designate.
 - **1-Line Theme Finalization**: Change the active live theme in `src/config/theme.ts`:
   ```typescript
   export const siteThemeConfig = {
-    activeTheme: 'minimal', // Set to 'minimal', 'modern', or 'parallax'
+    activeTheme: 'bento', // Set to 'bento' (recommended default), 'minimal', 'modern', or 'parallax'
   };
   ```
 - **Preview Routes**:
-  - `/preview/minimal`: Clean, understated, high-contrast engineering portfolio.
-  - `/preview/modern`: Glassmorphic cards, subtle gradient accents, and segmented filter controls.
-  - `/preview/parallax`: Spatial depth layers, 3D interactive card perspective tilt, and motion layers.
+  - `/` (or `/preview/bento`): **Engineering Bento Showcase** — Asymmetric bento grid spotlighting BigBasket at scale, architecture benchmarks, and mobile craft.
+  - `/preview/minimal`: **Clean Minimalist** — Understated, high-contrast, editorial engineering portfolio.
+  - `/preview/modern`: **Modern Interactive** — Glassmorphic cards, subtle gradient accents, and segmented filter controls.
+  - `/preview/parallax`: **Parallax & Motion** — Spatial depth layers, 3D interactive card perspective tilt, and motion layers.
 - **Dev-Only Switcher Toolbar**: While running `npm run dev`, a floating preview toolbar appears at the bottom-right corner for 1-click previewing between designs.
 
 ---

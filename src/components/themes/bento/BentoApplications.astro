@@ -1,0 +1,452 @@
+---
+import { portfolioData, getUniqueDomains } from '../../../data/portfolio';
+import { getAssetUrl } from '../../../utils/url';
+
+const { applications } = portfolioData;
+const uniqueDomains = getUniqueDomains(applications);
+---
+
+<section id="work" class="py-16 md:py-24 border-b border-zinc-200 dark:border-zinc-800/80 scroll-mt-16 relative">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header -->
+    <div class="max-w-3xl mb-10">
+      <div class="inline-flex items-center gap-2 rounded-full bg-sky-50 dark:bg-sky-950/60 px-3 py-1 text-xs font-semibold text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800/80 mb-3">
+        Engineering Bento Showcase
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        Commercial Android & Flutter Applications
+      </h2>
+      <p class="mt-3 text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        Production systems operating at tier-1 scale. Explore architecture highlights, verified business domains, and direct Google Play deployments.
+      </p>
+    </div>
+
+    <!-- Bento Filter Toolbar -->
+    <div class="mb-10 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/80 p-5 shadow-xs space-y-4">
+      
+      <!-- Top Row: Search and Quick Stats -->
+      <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+        <div class="relative flex-1 max-w-md">
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-zinc-400">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input
+            id="bento-search-input"
+            type="search"
+            placeholder="Search apps, domains, or technologies..."
+            class="w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 pl-10 pr-9 py-2.5 text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 focus:outline-none transition-all shadow-xs"
+            aria-label="Search applications"
+          />
+          <button
+            id="bento-clear-search"
+            type="button"
+            class="hidden absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200"
+            aria-label="Clear search"
+          >
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <span id="bento-results-count" class="text-xs font-semibold text-zinc-600 dark:text-zinc-400" aria-live="polite">
+            Showing {applications.length} of {applications.length} applications
+          </span>
+
+          <button
+            id="bento-reset-btn"
+            type="button"
+            class="hidden items-center gap-1.5 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-3 py-1.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:border-sky-500 hover:text-sky-600 transition-colors shadow-xs"
+          >
+            <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.033 8.033 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            <span>Reset</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Domain Filter Pills -->
+      <div class="pt-2 border-t border-zinc-100 dark:border-zinc-800/80">
+        <p class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-2.5">
+          Filter by Industry Domain
+        </p>
+        <div class="flex flex-wrap gap-1.5" id="bento-domain-pills">
+          <button
+            type="button"
+            class="bento-domain-btn active-pill px-3 py-1 rounded-lg text-xs font-semibold transition-all border border-zinc-900 bg-zinc-900 text-white dark:bg-white dark:border-white dark:text-zinc-900 shadow-xs"
+            data-domain="all"
+          >
+            All Domains ({applications.length})
+          </button>
+          {uniqueDomains.map((domain) => (
+            <button
+              type="button"
+              class="bento-domain-btn px-3 py-1 rounded-lg text-xs font-medium border border-zinc-200 dark:border-zinc-700/80 bg-white dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 hover:border-sky-400 dark:hover:border-sky-500 transition-all shadow-xs"
+              data-domain={domain}
+            >
+              {domain}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Business Model Filter -->
+      <div class="pt-2 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center gap-3">
+        <span class="text-xs font-medium text-zinc-500 dark:text-zinc-400 whitespace-nowrap">
+          Audience:
+        </span>
+        <div class="flex items-center gap-1.5" id="bento-model-pills">
+          <button
+            type="button"
+            class="bento-model-btn active-model px-2.5 py-0.5 rounded-md text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
+            data-model="all"
+          >
+            All
+          </button>
+          <button
+            type="button"
+            class="bento-model-btn px-2.5 py-0.5 rounded-md text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+            data-model="B2C"
+          >
+            B2C
+          </button>
+          <button
+            type="button"
+            class="bento-model-btn px-2.5 py-0.5 rounded-md text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+            data-model="B2B"
+          >
+            B2B
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Empty State -->
+    <div
+      id="bento-empty-state"
+      class="hidden rounded-2xl border border-dashed border-zinc-300 dark:border-zinc-700 p-12 text-center my-6"
+    >
+      <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-500">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h3 class="mt-4 text-base font-semibold text-zinc-900 dark:text-zinc-100">No applications match your criteria</h3>
+      <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+        Try adjusting your search query, or clear your filters to view all projects.
+      </p>
+      <button
+        id="bento-clear-filters-btn"
+        type="button"
+        class="mt-4 inline-flex items-center rounded-xl bg-zinc-900 dark:bg-white px-4 py-2 text-xs font-semibold text-white dark:text-zinc-900 hover:opacity-90 transition-opacity"
+      >
+        Clear All Filters
+      </button>
+    </div>
+
+    <!-- Asymmetric Bento Project Grid -->
+    <div id="bento-applications-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {applications.map((app) => {
+        const isFlagship = app.id === 'bigbasket';
+
+        return (
+          <article
+            class={`bento-card group flex flex-col justify-between rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 p-6 sm:p-7 shadow-xs hover:border-sky-500/50 hover:shadow-md transition-all duration-300 relative overflow-hidden ${
+              isFlagship ? 'md:col-span-2 lg:col-span-2 bg-gradient-to-br from-white via-white to-sky-50/30 dark:from-zinc-900 dark:via-zinc-900 dark:to-sky-950/20' : ''
+            }`}
+            data-name={app.name.toLowerCase()}
+            data-domain={app.domain}
+            data-model={app.businessModel}
+            data-tech={(app.technologies || []).join(' ').toLowerCase()}
+          >
+            <!-- Card Header: Icon, Tags, and Title -->
+            <div>
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex items-center gap-3.5">
+                  {app.iconPath ? (
+                    <img
+                      src={getAssetUrl(app.iconPath)}
+                      alt={`${app.name} icon`}
+                      class="h-12 w-12 sm:h-14 sm:w-14 rounded-2xl object-cover border border-zinc-200/90 dark:border-zinc-700/80 shadow-2xs group-hover:scale-105 transition-transform duration-200 shrink-0"
+                      loading="lazy"
+                      width="56"
+                      height="56"
+                    />
+                  ) : (
+                    <div class="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl bg-zinc-100 dark:bg-zinc-800 font-bold text-sm tracking-tight text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700/80 shadow-2xs">
+                      {app.initials}
+                    </div>
+                  )}
+                  <div>
+                    <div class="flex flex-wrap items-center gap-1.5 mb-1">
+                      <span class="inline-flex items-center rounded-md bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 text-[11px] font-semibold text-zinc-700 dark:text-zinc-300">
+                        {app.domain}
+                      </span>
+                      {app.businessModel !== 'Unspecified' && (
+                        <span class="inline-flex items-center rounded-md bg-sky-50 dark:bg-sky-950/60 border border-sky-200/80 dark:border-sky-800/80 px-2 py-0.5 text-[11px] font-semibold text-sky-700 dark:text-sky-300">
+                          {app.businessModel}
+                        </span>
+                      )}
+                      {isFlagship && (
+                        <span class="inline-flex items-center rounded-md bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800/80 px-2 py-0.5 text-[11px] font-bold text-amber-700 dark:text-amber-300">
+                          Flagship 25M+
+                        </span>
+                      )}
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                      {app.name}
+                    </h3>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Verified Description -->
+              {app.description && (
+                <p class="mt-4 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  {app.description}
+                </p>
+              )}
+
+              <!-- Contribution Highlights -->
+              {app.highlights && app.highlights.length > 0 && (
+                <div class="mt-4 pt-4 border-t border-zinc-100 dark:border-zinc-800/80">
+                  <h4 class="text-[11px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-2">
+                    Key Engineering Contributions:
+                  </h4>
+                  <ul class="space-y-1.5 text-xs text-zinc-600 dark:text-zinc-300">
+                    {app.highlights.map((highlight) => (
+                      <li class="flex items-start gap-2">
+                        <span class="text-sky-600 dark:text-sky-400 font-bold shrink-0 mt-0.5">&bull;</span>
+                        <span class="leading-relaxed">{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            <!-- Bottom: Technologies & Play Store Link -->
+            <div class="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800/80">
+              {app.technologies && app.technologies.length > 0 && (
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                  {app.technologies.map((tech) => (
+                    <span class="inline-flex items-center rounded-md bg-zinc-100 dark:bg-zinc-800/80 px-2 py-0.5 text-[11px] font-medium text-zinc-700 dark:text-zinc-300">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <div class="flex items-center justify-between pt-1">
+                <a
+                  href={app.playStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 rounded-xl bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 px-3.5 py-2 text-xs font-semibold hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all shadow-xs group-hover:ring-2 group-hover:ring-sky-500/30"
+                  aria-label={`View ${app.name} on Google Play`}
+                >
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3.609 1.814L13.792 12 3.61 22.186a1.5 1.5 0 0 1-.61-.75V2.564c.16-.328.384-.577.609-.75zm1.48-.958l11.45 6.61-2.072 2.072L5.089.856zm11.45 15.678l-11.45 6.61 9.378-9.378 2.072 2.072v.696zm.732-.423l3.655-2.11a1.5 1.5 0 0 0 0-2.597l-3.655-2.11-2.28 2.28 2.28 2.537z"/>
+                  </svg>
+                  <span>View on Google Play</span>
+                  <svg class="h-3 w-3 ml-0.5 opacity-70 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+
+                <span class="text-[11px] text-zinc-400 dark:text-zinc-500 font-medium">
+                  {app.company || 'Production App'}
+                </span>
+              </div>
+            </div>
+
+          </article>
+        );
+      })}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  let activeDomain = 'all';
+  let activeModel = 'all';
+  let searchQuery = '';
+
+  const searchInput = document.getElementById('bento-search-input') as HTMLInputElement | null;
+  const clearSearchBtn = document.getElementById('bento-clear-search');
+  const resultsCount = document.getElementById('bento-results-count');
+  const resetBtn = document.getElementById('bento-reset-btn');
+  const emptyState = document.getElementById('bento-empty-state');
+  const clearFiltersBtn = document.getElementById('bento-clear-filters-btn');
+  const cards = document.querySelectorAll('.bento-card');
+  const domainButtons = document.querySelectorAll('.bento-domain-btn');
+  const modelButtons = document.querySelectorAll('.bento-model-btn');
+  const totalCount = cards.length;
+
+  function filterCards() {
+    let visibleCount = 0;
+    const query = searchQuery.trim().toLowerCase();
+
+    cards.forEach((card) => {
+      const el = card as HTMLElement;
+      const name = el.getAttribute('data-name') || '';
+      const domain = el.getAttribute('data-domain') || '';
+      const model = el.getAttribute('data-model') || '';
+      const tech = el.getAttribute('data-tech') || '';
+
+      const matchesDomain = activeDomain === 'all' || domain === activeDomain;
+      const matchesModel = activeModel === 'all' || model === activeModel;
+      const matchesSearch =
+        query === '' ||
+        name.includes(query) ||
+        domain.toLowerCase().includes(query) ||
+        tech.includes(query);
+
+      if (matchesDomain && matchesModel && matchesSearch) {
+        el.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        el.classList.add('hidden');
+      }
+    });
+
+    if (resultsCount) {
+      resultsCount.textContent = `Showing ${visibleCount} of ${totalCount} applications`;
+    }
+
+    if (emptyState) {
+      if (visibleCount === 0) {
+        emptyState.classList.remove('hidden');
+      } else {
+        emptyState.classList.add('hidden');
+      }
+    }
+
+    const isFiltered = activeDomain !== 'all' || activeModel !== 'all' || query !== '';
+    if (resetBtn) {
+      if (isFiltered) {
+        resetBtn.classList.remove('hidden');
+        resetBtn.classList.add('inline-flex');
+      } else {
+        resetBtn.classList.remove('inline-flex');
+        resetBtn.classList.add('hidden');
+      }
+    }
+  }
+
+  // Search input listener
+  searchInput?.addEventListener('input', (e) => {
+    searchQuery = (e.target as HTMLInputElement).value;
+    if (clearSearchBtn) {
+      if (searchQuery.length > 0) {
+        clearSearchBtn.classList.remove('hidden');
+      } else {
+        clearSearchBtn.classList.add('hidden');
+      }
+    }
+    filterCards();
+  });
+
+  // Clear search button
+  clearSearchBtn?.addEventListener('click', () => {
+    if (searchInput) {
+      searchInput.value = '';
+      searchQuery = '';
+      clearSearchBtn.classList.add('hidden');
+      searchInput.focus();
+      filterCards();
+    }
+  });
+
+  // Domain pill listeners
+  domainButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      domainButtons.forEach((b) => {
+        b.classList.remove('border-zinc-900', 'bg-zinc-900', 'text-white', 'dark:bg-white', 'dark:border-white', 'dark:text-zinc-900');
+        b.classList.add('border-zinc-200', 'dark:border-zinc-700/80', 'bg-white', 'dark:bg-zinc-800/80', 'text-zinc-700', 'dark:text-zinc-300');
+      });
+
+      btn.classList.add('border-zinc-900', 'bg-zinc-900', 'text-white', 'dark:bg-white', 'dark:border-white', 'dark:text-zinc-900');
+      btn.classList.remove('border-zinc-200', 'dark:border-zinc-700/80', 'bg-white', 'dark:bg-zinc-800/80', 'text-zinc-700', 'dark:text-zinc-300');
+
+      activeDomain = btn.getAttribute('data-domain') || 'all';
+      filterCards();
+    });
+  });
+
+  // Model pill listeners
+  modelButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      modelButtons.forEach((b) => {
+        b.classList.remove('bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
+        b.classList.add('bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-700', 'dark:text-zinc-300');
+      });
+
+      btn.classList.add('bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
+      btn.classList.remove('bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-700', 'dark:text-zinc-300');
+
+      activeModel = btn.getAttribute('data-model') || 'all';
+      filterCards();
+    });
+  });
+
+  function resetAll() {
+    activeDomain = 'all';
+    activeModel = 'all';
+    searchQuery = '';
+    if (searchInput) {
+      searchInput.value = '';
+    }
+    if (clearSearchBtn) {
+      clearSearchBtn.classList.add('hidden');
+    }
+
+    domainButtons.forEach((b) => {
+      const isAll = b.getAttribute('data-domain') === 'all';
+      if (isAll) {
+        b.classList.add('border-zinc-900', 'bg-zinc-900', 'text-white', 'dark:bg-white', 'dark:border-white', 'dark:text-zinc-900');
+        b.classList.remove('border-zinc-200', 'dark:border-zinc-700/80', 'bg-white', 'dark:bg-zinc-800/80', 'text-zinc-700', 'dark:text-zinc-300');
+      } else {
+        b.classList.remove('border-zinc-900', 'bg-zinc-900', 'text-white', 'dark:bg-white', 'dark:border-white', 'dark:text-zinc-900');
+        b.classList.add('border-zinc-200', 'dark:border-zinc-700/80', 'bg-white', 'dark:bg-zinc-800/80', 'text-zinc-700', 'dark:text-zinc-300');
+      }
+    });
+
+    modelButtons.forEach((b) => {
+      const isAll = b.getAttribute('data-model') === 'all';
+      if (isAll) {
+        b.classList.add('bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
+        b.classList.remove('bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-700', 'dark:text-zinc-300');
+      } else {
+        b.classList.remove('bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
+        b.classList.add('bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-700', 'dark:text-zinc-300');
+      }
+    });
+
+    filterCards();
+  }
+
+  resetBtn?.addEventListener('click', resetAll);
+  clearFiltersBtn?.addEventListener('click', resetAll);
+
+  // Cross-component trigger: when clicking a domain card in BentoDomainExpertise
+  window.addEventListener('filter-by-domain', (e: Event) => {
+    const customEvent = e as CustomEvent<{ domain: string }>;
+    const targetDomain = customEvent.detail?.domain;
+    if (targetDomain) {
+      const targetBtn = Array.from(domainButtons).find(
+        (b) => b.getAttribute('data-domain') === targetDomain
+      ) as HTMLButtonElement | undefined;
+      if (targetBtn) {
+        targetBtn.click();
+      }
+    }
+  });
+</script>

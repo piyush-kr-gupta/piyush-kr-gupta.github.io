@@ -288,24 +288,25 @@ The website features a dedicated **Version Management System** allowing you to t
 
 ### How It Works
 1. **Public Visitors See ONE Cohesive Portfolio**:
-   When visitors browse to your main URL (`/`), they see only the single theme you have designated as active.
+   When visitors browse to your main URL (`/`), they see only the single theme you have designated as active (currently set to **Engineering Bento Showcase**).
 2. **Dev-Only Switcher Toolbar**:
-   During local development (`npm run dev`), a subtle floating preview toolbar appears at the bottom-right corner of the screen with 1-click pills: `[Minimal | Modern | Parallax]`.
+   During local development (`npm run dev`), a subtle floating preview toolbar appears at the bottom-right corner of the screen with 1-click pills: `[Bento | Minimal | Modern | Parallax]`.
    - **Production Stripping**: When you run `npm run build`, Astro's compiler uses `import.meta.env.DEV` to **100% strip the toolbar** from the production build. It never appears on your live site.
 3. **1-Line Theme Finalization**:
    In `src/config/theme.ts`, you control which theme is published to the public at `/`:
    ```typescript
    export const siteThemeConfig = {
-     activeTheme: 'minimal', // Change to 'modern' or 'parallax' anytime!
+     activeTheme: 'bento', // Set to 'bento' (recommended default), 'minimal', 'modern', or 'parallax'
    };
    ```
 4. **Private Preview Routes**:
    You can inspect each design variant directly at any time:
-   - `/preview/minimal`: Clean, understated, high-contrast engineering portfolio.
-   - `/preview/modern`: Glassmorphic cards, subtle gradient accents, and segmented filter controls.
-   - `/preview/parallax`: Spatial depth layers, 3D interactive card perspective tilt, and motion layers.
+   - `/` (or `/preview/bento`): **Engineering Bento Showcase** — Asymmetric bento grid spotlighting BigBasket at scale, architecture benchmarks, and mobile craft.
+   - `/preview/minimal`: **Clean Minimalist** — Understated, high-contrast, editorial engineering portfolio.
+   - `/preview/modern`: **Modern Interactive** — Glassmorphic cards, subtle gradient accents, and segmented filter controls.
+   - `/preview/parallax`: **Parallax & Motion** — Spatial depth layers, 3D interactive card perspective tilt, and motion layers.
 5. **Adding Future Design Ideas**:
-   To test a new design in the future (e.g. `bento` or `terminal`), simply create a new folder under `src/components/themes/`, add it to `siteThemeConfig.availableThemes`, and preview it privately without touching your live portfolio!
+   To test any new design in the future, simply create a new folder under `src/components/themes/`, add it to `siteThemeConfig.availableThemes`, and preview it privately without touching your live portfolio!
 
 ---
 
