@@ -100,7 +100,7 @@ export const portfolioData: PortfolioData = {
     experienceYears: '6.5+ Years',
     location: 'Bengaluru, India',
     shortSummary:
-      'Senior Mobile Engineer with 6.5+ years of experience building high-performance Android and cross-platform mobile applications with over 120M+ cumulative Google Play installs. Specialized in Kotlin, Android SDK, Jetpack Compose, Flutter, Clean Architecture, and progressive migrations for platforms serving tens of millions of users.',
+      'Senior Mobile Engineer with 6.5+ years of experience contributing to the development and optimization of high-performance high-performance Android and cross-platform mobile applications with over 120M+ cumulative Google Play installs. Specialized in Kotlin, Android SDK, Jetpack Compose, Flutter, Clean Architecture, and progressive migrations for platforms serving tens of millions of users.',
     extendedBio:
       'My engineering philosophy centers on clean architecture, maintainability, and measurable runtime performance. Over 6.5+ years, I have architected and delivered mobile solutions across diverse domains—including large-scale quick commerce, logistics marketplaces, healthcare diagnostic suites, and content platforms with 120M+ total installs. I specialize in building robust apps with Kotlin and Flutter, modernizing legacy Java codebases, streamlining state management with BLoC and MVVM, and driving crash rates down in production.',
     keyHighlights: [
