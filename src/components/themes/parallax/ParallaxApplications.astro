@@ -87,7 +87,8 @@ const uniqueDomains = getUniqueDomains(applications);
       {applications.map((app) => (
         <div class="tilt-wrapper will-change-transform">
           <article
-            class="parallax-app-card group h-full flex flex-col justify-between rounded-2xl border border-zinc-200/90 dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md p-6 shadow-md hover:shadow-2xl hover:border-purple-500/50 transition-all duration-200 ease-out"
+            id={app.id}
+            class="parallax-app-card group h-full flex flex-col justify-between rounded-2xl border border-zinc-200/90 dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md p-6 shadow-md hover:shadow-2xl hover:border-purple-500/50 transition-all duration-200 ease-out scroll-mt-24"
             data-app-id={app.id}
             data-name={app.name.toLowerCase()}
             data-domain={app.domain}

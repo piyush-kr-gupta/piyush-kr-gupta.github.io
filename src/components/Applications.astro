@@ -116,7 +116,8 @@ const uniqueDomains = getUniqueDomains(applications);
     <div id="applications-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {applications.map((app) => (
         <article
-          class="app-card group flex flex-col justify-between rounded-xl border border-zinc-200/90 dark:border-zinc-800 bg-white dark:bg-zinc-900/70 p-6 hover:border-zinc-400 dark:hover:border-zinc-700 transition-all hover:shadow-xs"
+          id={app.id}
+          class="app-card group flex flex-col justify-between rounded-xl border border-zinc-200/90 dark:border-zinc-800 bg-white dark:bg-zinc-900/70 p-6 hover:border-zinc-400 dark:hover:border-zinc-700 transition-all hover:shadow-xs scroll-mt-24"
           data-app-id={app.id}
           data-name={app.name.toLowerCase()}
           data-domain={app.domain}

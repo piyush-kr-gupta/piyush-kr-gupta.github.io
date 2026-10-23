@@ -154,7 +154,8 @@ const uniqueDomains = getUniqueDomains(applications);
     <div id="craft-applications-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
       {applications.map((app) => (
         <article
-          class="craft-card group flex flex-col justify-between rounded-2xl border border-zinc-800/90 bg-zinc-900/60 p-6 sm:p-7 hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200 relative"
+          id={app.id}
+          class="craft-card group flex flex-col justify-between rounded-2xl border border-zinc-800/90 bg-zinc-900/60 p-6 sm:p-7 hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200 relative scroll-mt-24"
           data-name={app.name.toLowerCase()}
           data-domain={app.domain}
           data-model={app.businessModel}

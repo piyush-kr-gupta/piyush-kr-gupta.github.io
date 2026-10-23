@@ -131,7 +131,8 @@ const uniqueDomains = getUniqueDomains(applications);
     <div id="modern-apps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {applications.map((app) => (
         <article
-          class="modern-app-card group relative flex flex-col justify-between rounded-2xl border border-zinc-200/90 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md p-6 hover:border-sky-500/50 dark:hover:border-sky-500/50 hover:shadow-lg dark:hover:shadow-sky-950/30 transition-all duration-300"
+          id={app.id}
+          class="modern-app-card group relative flex flex-col justify-between rounded-2xl border border-zinc-200/90 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md p-6 hover:border-sky-500/50 dark:hover:border-sky-500/50 hover:shadow-lg dark:hover:shadow-sky-950/30 transition-all duration-300 scroll-mt-24"
           data-app-id={app.id}
           data-name={app.name.toLowerCase()}
           data-domain={app.domain}
@@ -405,6 +406,45 @@ const uniqueDomains = getUniqueDomains(applications);
 
     resetBtn?.addEventListener('click', resetAll);
     emptyResetBtn?.addEventListener('click', resetAll);
+
+    // Ribbon click-to-scroll with filter auto-reset and pulse highlight
+    const ribbonLinks = document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]');
+    ribbonLinks.forEach((link) => {
+      const href = link.getAttribute('href');
+      if (
+        !href ||
+        href === '#' ||
+        href.startsWith('#work') ||
+        href.startsWith('#domains') ||
+        href.startsWith('#experience') ||
+        href.startsWith('#skills') ||
+        href.startsWith('#about') ||
+        href.startsWith('#contact') ||
+        href.startsWith('#top')
+      ) {
+        return;
+      }
+
+      link.addEventListener('click', (e) => {
+        const targetId = href.slice(1);
+        const targetCard = document.getElementById(targetId);
+        if (targetCard && targetCard.classList.contains('modern-app-card')) {
+          e.preventDefault();
+
+          if (targetCard.classList.contains('hidden')) {
+            resetAll();
+          }
+
+          targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.pushState(null, '', href);
+
+          targetCard.classList.add('ring-2', 'ring-sky-500', 'border-sky-500');
+          setTimeout(() => {
+            targetCard.classList.remove('ring-2', 'ring-sky-500', 'border-sky-500');
+          }, 2000);
+        }
+      });
+    });
   }
 
   initModernFilters();
