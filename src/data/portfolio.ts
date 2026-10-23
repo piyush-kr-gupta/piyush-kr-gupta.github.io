@@ -432,7 +432,6 @@ export const portfolioData: PortfolioData = {
     },
     {
       company: 'Epictus Solutions India Pvt. Ltd',
-      client: 'Vahak',
       role: 'Mobile Developer SDE-2 (Flutter, Kotlin)',
       period: 'Nov 2023 – Jan 2025',
       location: 'Bengaluru, India',
