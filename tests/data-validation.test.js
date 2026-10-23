@@ -144,8 +144,8 @@ test('Domain Derivation Logic: Computes domain stats dynamically from applicatio
   const domains = getUniqueDomains(portfolioData.applications);
   assert.deepStrictEqual(
     domains,
-    ['Devotional Social Media', 'Entertainment', 'Healthcare', 'Quick Commerce', 'Transportation & Logistics'],
-    'Must extract all unique domains in sorted order'
+    ['Quick Commerce', 'Transportation & Logistics', 'Healthcare', 'Entertainment', 'Devotional Social Media'],
+    'Must extract all unique domains in preferred presentation order'
   );
 
   const derived = getDerivedDomains(portfolioData.applications);

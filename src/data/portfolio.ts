@@ -592,8 +592,28 @@ export function getDerivedDomains(apps: Application[] = portfolioData.applicatio
 }
 
 /**
- * Unique list of domains directly extracted from projects for the filter dropdown
+ * Preferred presentation order for industry domains in portfolio filters
+ */
+export const PREFERRED_DOMAIN_ORDER = [
+  'Quick Commerce',
+  'Transportation & Logistics',
+  'Healthcare',
+  'Entertainment',
+  'Devotional Social Media',
+];
+
+/**
+ * Unique list of domains directly extracted from projects for the filter dropdown,
+ * ordered according to the preferred domain hierarchy.
  */
 export function getUniqueDomains(apps: Application[] = portfolioData.applications): string[] {
-  return Array.from(new Set(apps.map((a) => a.domain))).sort();
+  const unique = Array.from(new Set(apps.map((a) => a.domain)));
+  return unique.sort((a, b) => {
+    const idxA = PREFERRED_DOMAIN_ORDER.indexOf(a);
+    const idxB = PREFERRED_DOMAIN_ORDER.indexOf(b);
+    if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+    if (idxA !== -1) return -1;
+    if (idxB !== -1) return 1;
+    return a.localeCompare(b);
+  });
 }
