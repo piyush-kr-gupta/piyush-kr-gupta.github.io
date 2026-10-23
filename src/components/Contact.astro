@@ -60,8 +60,12 @@ const { profile, contact } = portfolioData;
         )}
       </div>
 
-      <p class="mt-8 text-xs text-zinc-500 dark:text-zinc-400">
-        Based in {profile.location} &bull; Open to Remote and Onsite Opportunities
+      <p class="mt-8 inline-flex items-center justify-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
+        <span class="relative flex h-2 w-2" aria-hidden="true">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+        </span>
+        <span>Based in {profile.location} &bull; Open to Remote and Onsite Opportunities</span>
       </p>
     </div>
   </div>
