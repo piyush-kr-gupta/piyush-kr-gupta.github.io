@@ -144,9 +144,16 @@ const uniqueDomains = getUniqueDomains(applications);
                     {app.initials}
                   </div>
                 )}
-                <h3 class="text-lg font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors leading-tight">
-                  {app.name}
-                </h3>
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-lg font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors leading-tight">
+                    {app.name}
+                  </h3>
+                  {app.company && (
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400 font-medium mt-1 max-w-[55%] leading-relaxed">
+                      {app.company}
+                    </p>
+                  )}
+                </div>
               </div>
 
               <!-- Domain & Business Model Badges -->
@@ -168,12 +175,6 @@ const uniqueDomains = getUniqueDomains(applications);
                 </div>
               </div>
             </div>
-
-            {app.company && (
-              <p class="text-xs text-zinc-500 dark:text-zinc-400 font-medium mt-2 mb-4">
-                {app.company}
-              </p>
-            )}
 
             <!-- Description -->
             <p class="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed mb-4">
