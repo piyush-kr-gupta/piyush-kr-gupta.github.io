@@ -233,7 +233,7 @@ export const portfolioData: PortfolioData = {
     {
       id: 'vahak',
       name: 'Vahak',
-      domain: 'Transport Services',
+      domain: 'Transportation & Logistics',
       businessModel: 'B2B',
       playStoreUrl:
         'https://play.google.com/store/apps/details?id=search.find.lorries.invite.transporter.add.lorries.deliveries.codenicely.search.vahak&hl=en_IN',
@@ -388,7 +388,7 @@ export const portfolioData: PortfolioData = {
   domainDescriptions: {
     'Quick Commerce':
       'High-throughput consumer and delivery partner platforms handling real-time order tracking, complex scheduled subscriptions, and 10–20 minute rapid delivery workflows.',
-    'Transport Services':
+    'Transportation & Logistics':
       'B2B marketplace networks connecting thousands of fleet owners, truck drivers, and logistics contractors with real-time bidding, route discovery, and telematics.',
     'Healthcare':
       'Mission-critical diagnostic reporting, clinical communication platforms, and lab inventory management systems built with strict data integrity and offline reliability.',

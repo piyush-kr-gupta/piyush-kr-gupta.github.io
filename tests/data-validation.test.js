@@ -18,7 +18,7 @@ const EXPECTED_APPS = [
   },
   {
     name: 'Vahak',
-    domain: 'Transport Services',
+    domain: 'Transportation & Logistics',
     businessModel: 'B2B',
     url: 'https://play.google.com/store/apps/details?id=search.find.lorries.invite.transporter.add.lorries.deliveries.codenicely.search.vahak&hl=en_IN',
   },
@@ -144,7 +144,7 @@ test('Domain Derivation Logic: Computes domain stats dynamically from applicatio
   const domains = getUniqueDomains(portfolioData.applications);
   assert.deepStrictEqual(
     domains,
-    ['Devotional Social Media', 'Entertainment', 'Healthcare', 'Quick Commerce', 'Transport Services'],
+    ['Devotional Social Media', 'Entertainment', 'Healthcare', 'Quick Commerce', 'Transportation & Logistics'],
     'Must extract all unique domains in sorted order'
   );
 

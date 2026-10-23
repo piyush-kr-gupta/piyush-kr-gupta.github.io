@@ -44,7 +44,7 @@ Here is what I focus on every day:
 | :--- | :--- | :--- | :--- |
 | **BigBasket: Groceries and more** | Quick Commerce | B2C | **100M+ Installs** |
 | **OTT Watch (TV Lens)** | Entertainment & Streaming | Consumer App | **10M+ Installs** |
-| **Vahak** | Transport Services | B2B Marketplace | **5M+ Installs** |
+| **Vahak** | Transportation & Logistics | B2B Marketplace | **5M+ Installs** |
 | **MyMandir** | Devotional Social Media | Vernacular Community | **5M+ Installs** |
 | **BigBasket Delivery Partner App** | Quick Commerce | Fleet Operations & Logistics | **1M+ Installs** |
 | **CrelioHealth For Patients** | Healthcare Diagnostics | B2C Patient Portal | **5L+ Installs** |
@@ -58,20 +58,20 @@ Here is what I focus on every day:
 Here are the 8 commercial applications I've contributed to or built from the ground up, all available on Google Play:
 
 ```
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│                             COMMERCIAL APPLICATIONS MATRIX                             │
-├───────────────────────────────┬─────────────────────────┬──────────────┬───────────────┤
-│ Application                   │ Domain                  │ Installs    │ Tech Stack    │
-├───────────────────────────────┼─────────────────────────┼──────────────┼───────────────┤
-│ BigBasket: Groceries and more │ Quick Commerce (B2C)    │ 100M+        │ Flutter/BLoC  │
-│ OTT Watch                     │ Entertainment & Media   │ 10M+         │ Kotlin/MVVM   │
-│ Vahak                         │ Transport Services (B2B)│ 5M+          │ Flutter/BLoC  │
-│ MyMandir                      │ Devotional Social Media │ 5M+          │ Java/Kotlin   │
-│ BB Delivery Partner App       │ Quick Commerce (Fleet)  │ 1M+          │ Kotlin/Java   │
-│ CrelioHealth For Patients     │ Healthcare Diagnostics  │ 5L+          │ Kotlin/Hilt   │
-│ CrelioHealth For Doctors      │ Healthcare Diagnostics  │ 10K+         │ Kotlin/MVVM   │
-│ Creliohealth Inventory        │ Healthcare & Lab Ops    │ 100+         │ Kotlin/Swift  │
-└───────────────────────────────┴─────────────────────────┴──────────────┴───────────────┘
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                 COMMERCIAL APPLICATIONS MATRIX                                 │
+├───────────────────────────────┬─────────────────────────────────┬──────────────┬───────────────┤
+│ Application                   │ Domain                          │ Installs     │ Tech Stack    │
+├───────────────────────────────┼─────────────────────────────────┼──────────────┼───────────────┤
+│ BigBasket: Groceries and more │ Quick Commerce (B2C)            │ 100M+        │ Flutter/BLoC  │
+│ OTT Watch                     │ Entertainment & Media           │ 10M+         │ Kotlin/MVVM   │
+│ Vahak                         │ Transportation & Logistics (B2B)│ 5M+          │ Flutter/BLoC  │
+│ MyMandir                      │ Devotional Social Media         │ 5M+          │ Java/Kotlin   │
+│ BB Delivery Partner App       │ Quick Commerce (Fleet)          │ 1M+          │ Kotlin/Java   │
+│ CrelioHealth For Patients     │ Healthcare Diagnostics          │ 5L+          │ Kotlin/Hilt   │
+│ CrelioHealth For Doctors      │ Healthcare Diagnostics          │ 10K+         │ Kotlin/MVVM   │
+│ Creliohealth Inventory        │ Healthcare & Lab Ops            │ 100+         │ Kotlin/Swift  │
+└───────────────────────────────┴─────────────────────────────────┴──────────────┴───────────────┘
 ```
 
 ### 1. BigBasket: Groceries and more
@@ -104,7 +104,7 @@ Here are the 8 commercial applications I've contributed to or built from the gro
 ---
 
 ### 3. Vahak
-- **Domain**: Transport Services & Logistics | **Model**: B2B Marketplace
+- **Domain**: Transportation & Logistics | **Model**: B2B Marketplace
 - **Company**: Epictus Solutions India Pvt. Ltd - Vahak
 - **Google Play**: [View on Google Play](https://play.google.com/store/apps/details?id=search.find.lorries.invite.transporter.add.lorries.deliveries.codenicely.search.vahak&hl=en_IN)
 - **Installs**: **5M+ Installs**
