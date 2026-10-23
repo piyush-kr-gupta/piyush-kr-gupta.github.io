@@ -400,7 +400,7 @@ export const portfolioData: PortfolioData = {
 
   experiences: [
     {
-      company: 'Recrosoft Technologies',
+      company: 'Recrosoft Technologies ',
       client: 'BigBasket',
       role: 'Senior Software Engineer (Flutter, Kotlin)',
       period: 'May 2025 – June 2026',
