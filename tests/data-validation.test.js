@@ -225,7 +225,7 @@ test('Theme Configuration: siteThemeConfig has valid activeTheme and theme list'
   const { siteThemeConfig } = await import('../src/config/theme.ts');
   assert.ok(['minimal', 'modern', 'parallax', 'bento', 'craft'].includes(siteThemeConfig.activeTheme));
   assert.strictEqual(siteThemeConfig.availableThemes.length, 5);
-  assert.strictEqual(siteThemeConfig.activeTheme, 'bento');
+  assert.strictEqual(siteThemeConfig.activeTheme, 'modern');
 });
 
 

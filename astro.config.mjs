@@ -4,6 +4,10 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+  // Disable Astro's dev toolbar
+  devToolbar: {
+    enabled: false,
+  },
   // Static site output for GitHub Pages, Vercel, Cloudflare Pages
   output: 'static',
   // Base path can be configured via environment variable ASTRO_BASE_URL for GitHub Pages subpath (e.g. /repo-name/)

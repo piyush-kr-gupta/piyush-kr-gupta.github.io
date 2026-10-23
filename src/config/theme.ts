@@ -16,6 +16,7 @@ export type ThemeVariant = 'bento' | 'craft' | 'minimal' | 'modern' | 'parallax'
 
 export interface ThemeConfig {
   activeTheme: ThemeVariant;
+  showDevSwitcher?: boolean;
   availableThemes: {
     id: ThemeVariant;
     name: string;
@@ -26,7 +27,8 @@ export interface ThemeConfig {
 
 export const siteThemeConfig: ThemeConfig = {
   // Set your public active theme here ('bento' | 'craft' | 'minimal' | 'modern' | 'parallax'):
-  activeTheme: 'bento',
+  activeTheme: 'modern',
+  showDevSwitcher: false,
 
   availableThemes: [
     {

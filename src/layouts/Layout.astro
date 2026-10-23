@@ -80,13 +80,12 @@ const jsonLd = {
     <!-- JSON-LD Structured Data for Search Engines -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
-    <!-- Immediate Theme Initialization Script (Prevents Flash of Unstyled Theme) -->
+    <!-- Immediate Theme Initialization Script (Defaults to Light theme, respects explicit dark preference) -->
     <script is:inline>
       (function () {
         try {
           const stored = localStorage.getItem('theme');
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          if (stored === 'dark' || (!stored && prefersDark)) {
+          if (stored === 'dark') {
             document.documentElement.classList.add('dark');
           } else {
             document.documentElement.classList.remove('dark');
